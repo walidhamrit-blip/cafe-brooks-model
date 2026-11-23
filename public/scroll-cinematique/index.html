@@ -4,12 +4,16 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits</title>
-<meta name="description" content="Démo cinématique zéro abonnement : smooth scroll (Lenis) + GSAP ScrollTrigger, hébergée sur Vercel." />
+<meta name="description" content="BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits. Ton spot préféré à Nabeul, AFH2. Ouvert tous les jours 7h30 — 00h00. Réservation 93 301 771." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/brooks-badge-192.png" />
-<link rel="apple-touch-icon" href="/assets/brand/brooks-badge-192.png" />
-<meta property="og:image" content="/assets/brand/brooks-badge-512.png" />
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/brand/brooks-badge-192.png" />
+<link rel="apple-touch-icon" href="../assets/brand/brooks-badge-192.png" />
+<meta property="og:image" content="../assets/brand/og-brooks.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="theme-color" content="#0E3B2B" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
 <script>/* si le JS est coupé, aucun contenu ne reste caché */document.documentElement.classList.add("anim");</script>
 <style>
@@ -107,6 +111,7 @@
   }
   .scroll-hint .bar{width:1px;height:46px;background:linear-gradient(to bottom,transparent,var(--gold-light));animation:pulse 2.2s ease-in-out infinite}
   @keyframes pulse{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+  @keyframes splashOut{to{opacity:0;visibility:hidden}}
 
   /* ---------- HORIZONTAL PIN ---------- */
   #tour{
@@ -240,6 +245,52 @@
   }
   .brand-badge{width:38px;height:38px;border-radius:50%;box-shadow:0 4px 14px rgba(0,0,0,.22);flex:0 0 auto}
 
+
+  /* ---------- MOBILE : le pin devient un carrousel snap natif ---------- */
+  @media (max-width: 860px){
+    #tour{height:auto;min-height:0;padding:26px 0 10px;justify-content:flex-start}
+    #tour .pin-head{padding:16px 0 2px}
+    #tour p.lead{font-size:13.5px;line-height:1.7}
+    .track-outer{height:auto;flex:0 0 auto;overflow:visible}
+    .track{
+      overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      padding:6px 18px 22px;gap:14px;transform:none !important;scrollbar-width:none;
+    }
+    .track::-webkit-scrollbar{display:none}
+    .card{flex:0 0 84vw;height:min(58svh,420px);scroll-snap-align:center;border-radius:22px}
+    .card img{transform:none}
+    .card-body{padding:18px}
+    .card-body h3{font-size:1.5rem}
+    .card-body p{font-size:12px}
+    .pin-hint{padding:0 0 20px;font-size:9px;letter-spacing:.18em}
+    .pin-hint::before{content:"↔ "; }
+
+    .stack-viewport{height:auto;min-height:0;padding:66px 0 56px;display:block}
+    .plate{position:relative;width:min(78vw,330px);margin:0 auto 26px;border-radius:50%}
+    .plate-copy h2{font-size:clamp(2rem,9vw,2.6rem)}
+    .plate-copy p{font-size:13px}
+
+    #pasta{padding:74px 0}
+    #story,#reserve,#quote{padding:74px 0}
+    .hero-inner{padding-bottom:15vh}
+    .hero-meta{gap:14px;font-size:10px}
+    .hero-meta span:nth-child(3){display:none}
+    .scroll-hint{bottom:12px}
+    #nav{padding:12px 16px}
+    .cta{padding:11px 18px;font-size:10px}
+    .stats{gap:16px}
+    #splash img{width:min(52vw,160px)}
+  }
+  @media (max-width: 480px){
+    .card{flex:0 0 88vw;height:min(54svh,380px)}
+    .hero-title{font-size:clamp(2.1rem,10.5vw,3rem)}
+    .pasta-grid,#story .story-grid{gap:22px}
+  }
+
+  /* quand le JS est coupé : rien ne reste caché + le splash s'efface seul */
+  html:not(.anim) #splash{display:none}
+  html:not(.anim) .reveal,html:not(.anim) .reveal-lines .ln > span{opacity:1 !important;transform:none !important}
+
   /* grain */
   .grain::after{
     content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.03;
@@ -253,21 +304,14 @@
 </style>
 </head>
 <body class="grain">
-<div id="splash" aria-hidden="true">
-  <div><img src="/assets/brand/brooks-badge.svg" alt="" width="190" height="190" /><span>Nabeul • AFH2</span></div>
+<div id="splash" aria-hidden="true" style="animation:splashOut .9s ease 1.6s forwards">
+  <div><img src="../assets/brand/brooks-badge.svg" alt="" width="190" height="190" /><span>Nabeul • AFH2</span></div>
 </div>
 <div id="rail"></div>
 
-<!-- Bandeau de contexte : ce fichier est une PREUVE technique, à retirer sur le site final -->
-<div id="proof" style="position:fixed;left:50%;bottom:14px;transform:translateX(-50%);z-index:130;display:flex;align-items:center;gap:10px;background:rgba(31,26,23,.88);color:#fff;border:1px solid rgba(245,194,107,.35);border-radius:999px;padding:9px 16px;font:800 10px/1 'Plus Jakarta Sans',system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;backdrop-filter:blur(10px);white-space:nowrap">
-  <span style="width:6px;height:6px;border-radius:50%;background:#F5C26B;display:inline-block"></span>
-  Preuve cinématique — GSAP + Lenis
-  <button onclick="document.getElementById('proof').remove()" style="background:none;border:0;color:rgba(255,255,255,.6);font:inherit;cursor:pointer;padding:0 0 0 4px">✕</button>
-</div>
-
 <header id="nav">
   <a class="brand" href="#hero">
-    <img class="brand-badge" src="/assets/brand/brooks-badge.svg" alt="Logo Brooks Café" width="38" height="38" />
+    <img class="brand-badge" src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café" width="38" height="38" />
     <span><b>Brooks Café</b><small>Nabeul • Cap Bon</small></span>
   </a>
   <nav class="links">
@@ -281,7 +325,7 @@
 
 <!-- ============ HERO ============ -->
 <section id="hero">
-  <div class="hero-media"><img src="/assets/venue/brooks-salon-columns.jpg" alt="Salle du Brooks Café Nabeul" /></div>
+  <div class="hero-media"><img src="../assets/venue/brooks-salon-columns.jpg" alt="Salle du Brooks Café Nabeul" /></div>
   <div class="wrap hero-inner">
     <p class="eyebrow">Nabeul • Cap Bon • Côte Méditerranéenne</p>
     <h1 class="hero-title">
@@ -313,19 +357,19 @@
   <div class="track-outer">
     <div class="track">
       <article class="card">
-        <img src="/assets/venue/brooks-salon-lumiere.jpg" alt="Le salon aux colonades et ses luminaires" />
+        <img src="../assets/venue/brooks-salon-lumiere.jpg" alt="Le salon aux colonades et ses luminaires" />
         <div class="card-body"><div class="num">01 — LE GRAND SALON</div><h3>Colonnes &amp; Lumière</h3><p>Les colonnes organiques, les suspensions en rotin et les alcôves vertes : la signature architecturale de Brooks.</p><div class="price">Capacité → 90 places</div></div>
       </article>
       <article class="card">
-        <img src="/assets/venue/brooks-salle-rouge.jpg" alt="La salle Brooks aux fauteuils rouges" />
+        <img src="../assets/venue/brooks-salle-rouge.jpg" alt="La salle Brooks aux fauteuils rouges" />
         <div class="card-body"><div class="num">02 — LA SALLE</div><h3>Rouge &amp; Velours</h3><p>Banquettes capitonnées, fauteuils rouges, palmiers et pierre chaude : l'adresse ouverte de 7h30 à minuit.</p><div class="price">Service continu</div></div>
       </article>
       <article class="card">
-        <img src="/assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Pizza fruits de mer Brooks Café" />
+        <img src="../assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Pizza fruits de mer Brooks Café" />
         <div class="card-body"><div class="num">03 — PIZZA • PASTA</div><h3>Pizza Fruits de Mer</h3><p>Pâte fine, fruits de mer, fromage fondu et basilic — l'une des pizzas qui a fait la réputation de la maison.</p><div class="price">Four → sur commande</div></div>
       </article>
       <article class="card">
-        <img src="/assets/venue/brooks-pizza-table.jpg" alt="Pizza quatre fromages servie en salle" />
+        <img src="../assets/venue/brooks-pizza-table.jpg" alt="Pizza quatre fromages servie en salle" />
         <div class="card-body"><div class="num">04 — FROMAGÈRE</div><h3>Pizza Fromages</h3><p>Moelleux, fondante, à partager au centre de la table — servie sur planche de bois, comme il se doit.</p><div class="price">À partager → 2/3 pers.</div></div>
       </article>
     </div>
@@ -361,7 +405,7 @@
 <section id="signature">
   <div class="stack-viewport">
     <div class="plate" id="plate">
-      <img src="/assets/menu/cheesecake-lotus.jpg" alt="Cheesecake Lotus Brooks Café" />
+      <img src="../assets/menu/cheesecake-lotus.jpg" alt="Cheesecake Lotus Brooks Café" />
     </div>
     <div class="plate-copy">
       <p class="eyebrow">La signature sucrée</p>
@@ -376,7 +420,7 @@
 <section id="pasta">
   <div class="wrap pasta-grid">
     <div class="pasta-media" id="pastaMedia">
-      <img src="/assets/menu/pasta-fruits-de-mer.jpg" alt="Pasta fruits de mer — crevettes, moules, tomates cerises" />
+      <img src="../assets/menu/pasta-fruits-de-mer.jpg" alt="Pasta fruits de mer — crevettes, moules, tomates cerises" />
     </div>
     <div class="pasta-copy">
       <p class="eyebrow">Le plat à partager</p>
@@ -404,7 +448,7 @@
 
 <!-- ============ PARALLAX QUOTE ============ -->
 <section id="quote">
-  <div class="bg" id="quoteBg" style="background-image:url('/assets/venue/brooks-salon-lumiere.jpg')"></div>
+  <div class="bg" id="quoteBg" style="background-image:url('../assets/venue/brooks-salon-lumiere.jpg')"></div>
   <div class="wrap">
     <blockquote>« Le meilleur <em>latte espagnol</em> du Cap Bon — et la terrasse la plus douce au coucher du soleil. »</blockquote>
     <cite>— Review Google, Nabeul 2025</cite>
@@ -454,7 +498,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <img src="/assets/brand/brooks-badge.svg" alt="Logo Brooks Café Nabeul" width="92" height="92" style="margin-bottom:14px" />
+        <img src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café Nabeul" width="92" height="92" style="margin-bottom:14px" />
         <p class="big serif">Brooks Café<br />Nabeul</p>
         <p style="margin-top:12px;max-width:32ch">Food • Chill • Good vibes — ton spot préféré sur la côte du Cap Bon.</p>
       </div>
@@ -626,6 +670,8 @@
     return;
   }
 
+  /* Filet de sécurité : si une animation casse, tout le contenu redevient visible. */
+  try {
   /* HERO */
   gsap.to(".hero-media", {
     yPercent: 16, ease: "none",
@@ -658,7 +704,8 @@
 
   /* TOUR : pin + travelling horizontal */
   const track = $(".track");
-  if (track) {
+  const canPin = window.matchMedia("(min-width: 861px)").matches;
+  if (track && canPin) {
     const getDistance = () => Math.max(0, track.scrollWidth - window.innerWidth + 48);
     const tween = gsap.to(track, {
       x: () => -getDistance(),
@@ -719,8 +766,20 @@
   /* Le pin modifie les hauteurs : on recalcule après images + polices */
   window.addEventListener("load", () => ST.refresh());
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => ST.refresh());
-  let rt;
-  window.addEventListener("resize", () => { clearTimeout(rt); rt = setTimeout(() => ST.refresh(), 180); });
+  } catch (err) {
+    console.error("Animation indisponible, contenu affiché sans animation :", err);
+    document.documentElement.classList.remove("anim");
+  }
+
+  let rt, wasPinned = canPin;
+  window.addEventListener("resize", () => {
+    clearTimeout(rt);
+    rt = setTimeout(() => {
+      const nowPinned = window.matchMedia("(min-width: 861px)").matches;
+      if (nowPinned !== wasPinned) { location.reload(); return; }
+      ST.refresh();
+    }, 220);
+  });
 })();
 </script>
 </body>
