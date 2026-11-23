@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400" role="img" aria-labelledby="t d">
+  <title id="t">Brooks Café — Nabeul</title>
+  <desc id="d">Badge rond Brooks Café : Pizza, Pasta, Food, Fruits.</desc>
+  <defs>
+    <linearGradient id="ribbon" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C8242F"/>
+      <stop offset="0.55" stop-color="#A3151F"/>
+      <stop offset="1" stop-color="#78101A"/>
+    </linearGradient>
+    <radialGradient id="sheen" cx="0.32" cy="0.24" r="0.85">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0.10"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Anneau vert -->
+  <circle cx="200" cy="200" r="196" fill="#0E3B2B"/>
+  <circle cx="200" cy="200" r="186" fill="#14624A"/>
+  <circle cx="200" cy="200" r="186" fill="url(#sheen)"/>
+  <circle cx="200" cy="200" r="184" fill="none" stroke="#F6EFDF" stroke-width="2.2"/>
+  <circle cx="200" cy="200" r="136" fill="none" stroke="#F6EFDF" stroke-width="1.8" opacity="0.9"/>
+
+  <!-- Disque central -->
+  <circle cx="200" cy="200" r="136" fill="#F6EFDF"/>
+  <circle cx="200" cy="200" r="136" fill="url(#sheen)" opacity="0.6"/>
+
+  <!-- Texte circulaire haut -->
+  <g>
+    <text x="58.89" y="131.18" transform="rotate(-64.00 58.89 131.18)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">P</text>
+    <text x="74.07" y="106.25" transform="rotate(-53.33 74.07 106.25)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">I</text>
+    <text x="93.60" y="84.56" transform="rotate(-42.67 93.60 84.56)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">Z</text>
+    <text x="116.80" y="66.86" transform="rotate(-32.00 116.80 66.86)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">Z</text>
+    <text x="142.88" y="53.76" transform="rotate(-21.33 142.88 53.76)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">A</text>
+    <text x="200.00" y="43.00" transform="rotate(0.00 200.00 43.00)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">•</text>
+    <text x="257.12" y="53.76" transform="rotate(21.33 257.12 53.76)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">P</text>
+    <text x="283.20" y="66.86" transform="rotate(32.00 283.20 66.86)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">A</text>
+    <text x="306.40" y="84.56" transform="rotate(42.67 306.40 84.56)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">S</text>
+    <text x="325.93" y="106.25" transform="rotate(53.33 325.93 106.25)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">T</text>
+    <text x="341.11" y="131.18" transform="rotate(64.00 341.11 131.18)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="23" font-weight="800" fill="#F6EFDF">A</text>
+  </g>
+
+  <!-- Texte circulaire bas (sens inversé pour rester lisible) -->
+  <g>
+    <text x="40.01" y="278.03" transform="rotate(64.00 40.01 278.03)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">F</text>
+    <text x="57.22" y="306.29" transform="rotate(53.33 57.22 306.29)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">O</text>
+    <text x="79.36" y="330.89" transform="rotate(42.67 79.36 330.89)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">O</text>
+    <text x="105.67" y="350.95" transform="rotate(32.00 105.67 350.95)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">D</text>
+    <text x="167.05" y="374.92" transform="rotate(10.67 167.05 374.92)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">•</text>
+    <text x="232.95" y="374.92" transform="rotate(-10.67 232.95 374.92)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">F</text>
+    <text x="264.76" y="365.80" transform="rotate(-21.33 264.76 365.80)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">R</text>
+    <text x="294.33" y="350.95" transform="rotate(-32.00 294.33 350.95)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">U</text>
+    <text x="320.64" y="330.89" transform="rotate(-42.67 320.64 330.89)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">I</text>
+    <text x="342.78" y="306.29" transform="rotate(-53.33 342.78 306.29)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">T</text>
+    <text x="359.99" y="278.03" transform="rotate(-64.00 359.99 278.03)" text-anchor="middle" font-family="'Plus Jakarta Sans','Helvetica Neue',Arial,sans-serif" font-size="22" font-weight="800" fill="#F6EFDF">S</text>
+  </g>
+
+  <!-- Trois étoiles -->
+  <g fill="#123F2E">
+    <path d="M200 108.5 l4.4 8.9 9.8 1.4 -7.1 6.9 1.7 9.7 -8.8 -4.6 -8.8 4.6 1.7 -9.7 -7.1 -6.9 9.8 -1.4z"/>
+    <path d="M146 120 l3.6 7.3 8.1 1.2 -5.9 5.7 1.4 8 -7.2 -3.8 -7.2 3.8 1.4 -8 -5.9 -5.7 8.1 -1.2z" opacity="0.9"/>
+    <path d="M254 120 l3.6 7.3 8.1 1.2 -5.9 5.7 1.4 8 -7.2 -3.8 -7.2 3.8 1.4 -8 -5.9 -5.7 8.1 -1.2z" opacity="0.9"/>
+  </g>
+
+  <!-- Bannière rouge -->
+  <g transform="translate(200 200) rotate(-6) translate(-200 -200)">
+    <path d="M80 186 l-22 5 22 5 v28 h240 v-28 l22 -5 -22 -5z" fill="#000" opacity="0.13" transform="translate(0 4)"/>
+    <path d="M80 180 l-22 5 22 5 v28 h240 v-28 l22 -5 -22 -5z" fill="url(#ribbon)"/>
+    <path d="M58 185 l-20 5 20 5z" fill="#78101A"/>
+    <path d="M342 185 l20 5 -20 5z" fill="#78101A"/>
+    <text x="200" y="210" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="40" font-weight="700"
+          letter-spacing="1" fill="#FFFFFF">BROOKS</text>
+    <path d="M96 196 h18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+    <path d="M286 196 h18" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
+  </g>
+
+  <!-- CAFE -->
+  <text x="200" y="278" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-size="36"
+        letter-spacing="6" fill="#123F2E">CAFE</text>
+</svg>

@@ -16,31 +16,33 @@ import {
 type Lang = "en" | "fr" | "ar";
 
 const IMAGES = {
-  hero: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2400&auto=format&fit=crop",
+  hero: "/assets/venue/brooks-salon-columns.jpg",
   hero2: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2400&auto=format&fit=crop",
   bar: "https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=2000&auto=format&fit=crop",
   barista: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop",
   latte: "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop",
   latteArt: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=1600&auto=format&fit=crop",
-  salon: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000&auto=format&fit=crop",
+  salon: "/assets/venue/brooks-salle-rouge.jpg",
   table: "https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1600&auto=format&fit=crop",
   terrace: "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=2000&auto=format&fit=crop",
   terrace2: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=1600&auto=format&fit=crop",
-  lounge: "https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=2000&auto=format&fit=crop",
+  lounge: "/assets/venue/brooks-salon-lumiere.jpg",
   burger: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200&auto=format&fit=crop",
   chicken: "https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1200&auto=format&fit=crop",
-  pizza: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1200&auto=format&fit=crop",
-  pasta: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?q=80&w=1200&auto=format&fit=crop",
+  pizza: "/assets/venue/brooks-pizza-fruits-de-mer.jpg",
+  pasta: "/assets/menu/pasta-fruits-de-mer.jpg",
   salad: "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?q=80&w=1200&auto=format&fit=crop",
   brunch: "https://images.unsplash.com/photo-1484723091739-30a097e8f929?q=80&w=1200&auto=format&fit=crop",
   croissant: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=1200&auto=format&fit=crop",
-  cheesecake: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=1200&auto=format&fit=crop",
+  cheesecake: "/assets/menu/cheesecake-lotus.jpg",
   chocolate: "https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1200&auto=format&fit=crop",
   mango: "https://images.unsplash.com/photo-1546173159-315724a31696?q=80&w=1200&auto=format&fit=crop",
   mojito: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1200&auto=format&fit=crop",
   milkshake: "https://images.unsplash.com/photo-1577805947697-89e18249d767?q=80&w=1200&auto=format&fit=crop",
   iced: "https://images.unsplash.com/photo-1517701550927-30cf4ba1dba5?q=80&w=1200&auto=format&fit=crop",
   spread: "https://images.unsplash.com/photo-1490645935967-10de6ba17061?q=80&w=1600&auto=format&fit=crop",
+  pizzaTable: "/assets/venue/brooks-pizza-table.jpg",
+  badge: "/assets/brand/brooks-badge.svg",
   fineplate: "https://images.unsplash.com/photo-1600565193348-f74bd3c7ccdf?q=80&w=1200&auto=format&fit=crop",
 };
 
@@ -412,10 +414,13 @@ export default function App() {
           <div className="flex items-center justify-between gap-3 px-3 md:px-5">
             {/* Logo */}
             <a href="#top" className="flex items-center gap-3 group">
-              <span className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-[#2D4A3E] shadow-lg shadow-[#2D4A3E]/25 overflow-hidden">
-                <span className={`${serif} text-2xl font-bold text-[#F5C26B] leading-none pt-0.5`}>B</span>
-                <span className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-[#C59B27] via-[#F5C26B] to-[#C59B27]" />
-              </span>
+              <img
+                src={IMAGES.badge}
+                alt="Logo Brooks Café Nabeul"
+                width={44}
+                height={44}
+                className="h-11 w-11 rounded-full shrink-0 drop-shadow-[0_6px_18px_rgba(14,59,43,0.28)] transition-transform duration-500 group-hover:rotate-[8deg]"
+              />
               <span className="leading-tight">
                 <span className={`block text-[17px] font-extrabold tracking-[0.12em] text-[#1F1A17] ${sans}`}>BROOKS <span className="text-[#C59B27]">CAFÉ</span></span>
                 <span className="block text-[10px] font-semibold tracking-[0.28em] uppercase text-[#6B5E55]">Nabeul • Cap Bon</span>
@@ -982,7 +987,7 @@ export default function App() {
           <div className="flex flex-col md:flex-row justify-between gap-8">
             <div className="max-w-sm">
               <div className="flex items-center gap-3">
-                <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#F5C26B]"><span className={`${serif} text-3xl font-bold text-[#1F1A17]`}>B</span></span>
+                <img src={IMAGES.badge} alt="Logo Brooks Café Nabeul" width={52} height={52} className="rounded-full" style={{ height: 52, width: 52 }} />
                 <span><span className="block text-lg font-extrabold tracking-[0.12em]">BROOKS <span className="text-[#F5C26B]">CAFÉ</span></span><span className="block text-[10px] font-bold tracking-[0.3em] uppercase text-white/60">Nabeul • Cap Bon</span></span>
               </div>
               <p className="mt-4 text-sm text-white/70 leading-relaxed">{t.footer_tag}</p>
