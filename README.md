@@ -11,9 +11,18 @@ Deux versions du site, une seule source d'images.
 
 ```bash
 npm install
-npm run dev              # application React  → http://localhost:5173
-npm run preview:cinematic # version cinématique → http://localhost:4321/scroll-cinematique/
+npm run dev               # serveur dev (même routage que la prod) → http://localhost:5173
+npm run preview:cinematic # statique, dossier public/ → http://localhost:4321/scroll-cinematique/
 ```
+
+Depuis le routage mis en place dans `vite.config.ts`, `npm run dev` se comporte comme Vercel :
+
+| URL locale | Rendu |
+|---|---|
+| `/` | redirection → `/scroll-cinematique/` (page d'accueil finale) |
+| `/scroll-cinematique/` | version cinématique trilingue |
+| `/app/` | application React |
+| `/menu`, `/reserver` | ancres de la version cinématique |
 
 `preview:cinematic` sert le dossier `public/` exactement comme Vercel : les chemins d'images
 (`../assets/...`) sont donc identiques en local et en production.
