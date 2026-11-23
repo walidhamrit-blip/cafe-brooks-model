@@ -15,6 +15,17 @@
     <meta property="og:description" content="Food • Chill • Good vibes — ton spot préféré à Nabeul. Ouvert tous les jours 7h30 — 00h00. AFH2, Av. Habib Bourguiba, Nabeul." />
     <meta property="og:image" content="/assets/brand/brooks-badge-512.png" />
     <meta name="theme-color" content="#0E3B2B" />
+    <script>
+      /* Thème clair/sombre appliqué avant le premier paint (anti-flash).
+         Mémoire → préférence système → clair. Même logique que dans App.tsx. */
+      (function () {
+        try {
+          var s = localStorage.getItem("brooks-theme");
+          var dark = s === "dark" || (s !== "light" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) { /* on garde le thème clair */ }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

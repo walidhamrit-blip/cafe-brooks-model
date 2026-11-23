@@ -99,6 +99,11 @@ window.BROOKS_I18N = {
     "foot.karaoke": "Karaoké dimanche",
     "foot.rights": "© 2026 Brooks Café Nabeul",
     "foot.stack": "Site GSAP + Lenis — hébergé sur Vercel",
+
+    "wa.label": "Écrivez-nous sur WhatsApp",
+    "wa.msg": "Bonjour Brooks Café Nabeul ! Je souhaite avoir des informations.",
+    "theme.dark": "Mode sombre",
+    "theme.light": "Mode clair",
   },
 
   en: {
@@ -196,6 +201,11 @@ window.BROOKS_I18N = {
     "foot.karaoke": "Karaoke on Sundays",
     "foot.rights": "© 2026 Brooks Café Nabeul",
     "foot.stack": "GSAP + Lenis site — hosted on Vercel",
+
+    "wa.label": "Chat with us on WhatsApp",
+    "wa.msg": "Hello Brooks Café Nabeul! I would like some information.",
+    "theme.dark": "Dark mode",
+    "theme.light": "Light mode",
   },
 
   ar: {
@@ -293,5 +303,10 @@ window.BROOKS_I18N = {
     "foot.karaoke": "كاريوكي كل أحد",
     "foot.rights": "© 2026 بروكس كافيه نابل",
     "foot.stack": "موقع GSAP + Lenis — مستضاف على Vercel",
+
+    "wa.label": "راسلنا على واتساب",
+    "wa.msg": "مرحباً بروكس كافيه نابل! أود الحصول على معلومات.",
+    "theme.dark": "الوضع الداكن",
+    "theme.light": "الوضع الفاتح",
   },
 };
