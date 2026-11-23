@@ -19,15 +19,56 @@
   --font-serif-ar: "Amiri", Georgia, serif;
 }
 
+/* ============ THÈME CLAIR / SOMBRE ============
+   Les couleurs de l'app sont branchées sur ces variables :
+   html.dark bascule simplement les valeurs. */
+:root {
+  --c-bg: #FAF6F0;
+  --c-surface: #F3ECE1;
+  --c-card: #FFFFFF;
+  --c-cream: #FFFDF8;
+  --c-text: #1F1A17;
+  --c-body: #3d3430;
+  --c-muted: #6B5E55;
+  --c-ink: #1F1A17;
+  --c-on-dark: #FAF6F0;
+  --c-olive: #2D4A3E;
+  --c-olive-deep: #1E332B;
+  --c-olive-ink: #2D4A3E;
+  --c-terra: #C86D51;
+  --c-terra-deep: #A8553E;
+  --c-terra-ink: #A8553E;
+  --c-gold: #C59B27;
+  --c-gold-light: #F5C26B;
+  --c-tan: #B48C55;
+  color-scheme: light;
+}
+html.dark {
+  --c-bg: #15110D;
+  --c-surface: #1E1813;
+  --c-card: #241D17;
+  --c-cream: #29211A;
+  --c-text: #F3EBE1;
+  --c-body: #D9CEC1;
+  --c-muted: #B4A293;
+  --c-ink: #171210;
+  --c-olive-ink: #A8CCB9;
+  --c-terra-ink: #E8A98F;
+  --c-gold: #CFA43B;
+  --c-tan: #C2A067;
+  color-scheme: dark;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background: #FAF6F0;
-  color: #1F1A17;
+  background: var(--c-bg);
+  color: var(--c-text);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 .font-serif-en { font-family: "Cormorant Garamond", "Playfair Display", Georgia, serif; }
@@ -86,12 +127,15 @@ body {
 
 /* Custom scrollbar */
 ::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #F3ECE1; }
-::-webkit-scrollbar-thumb { background: #C59B27; border-radius: 10px; border: 2px solid #F3ECE1; }
+::-webkit-scrollbar-track { background: var(--c-surface); }
+::-webkit-scrollbar-thumb { background: var(--c-gold); border-radius: 10px; border: 2px solid var(--c-surface); }
 
 /* Image grading */
 .img-sunlit {
   filter: brightness(1.05) saturate(1.1);
+}
+html.dark .img-sunlit {
+  filter: brightness(0.85) saturate(1.05);
 }
 
 /* Hide scrollbar for tabs */
@@ -99,4 +143,20 @@ body {
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Selection */
-::selection { background: #2D4A3E; color: #FAF6F0; }
+::selection { background: var(--c-olive); color: var(--c-on-dark); }
+
+/* ============ BOUTON WHATSAPP FLOTTANT ============ */
+@keyframes wa-pulse {
+  0% { transform: scale(1); opacity: 0.45; }
+  70%, 100% { transform: scale(1.9); opacity: 0; }
+}
+.wa-pulse {
+  animation: wa-pulse 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+.wa-float {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.wa-float:hover {
+  transform: translateY(-3px) scale(1.06);
+  box-shadow: 0 20px 46px rgba(37, 211, 102, 0.55);
+}
