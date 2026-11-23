@@ -4,7 +4,7 @@ Deux versions du site, une seule source d'images.
 
 | Version | URL locale | URL Vercel | Rôle |
 |---|---|---|---|
-| **Cinématique** (finale) | `/scroll-cinematique/` | `https://<projet>.vercel.app/scroll-cinematique/` | One-page GSAP + Lenis, vraies photos, logo vectoriel |
+| **Cinématique trilingue** (finale) | `/scroll-cinematique/` | `https://<projet>.vercel.app/scroll-cinematique/` | One-page GSAP + Lenis, FR/EN/**AR (RTL)**, menu à prix réels, vraies photos, logo vectoriel |
 | Application React | `/` | `https://<projet>.vercel.app/` | Version React/Vite existante (trilingue, réservation, menu) |
 
 ## Lancer en local
@@ -28,13 +28,17 @@ npm run build     # → dist/index.html (application React, fichier unique)
 
 ```
 public/
-  scroll-cinematique/index.html   ← la version cinématique (HTML + CSS + JS autonome)
+  scroll-cinematique/index.html   ← la version cinématique trilingue (HTML + CSS + JS autonome)
+  scroll-cinematique/i18n.js      ← dictionnaire FR / EN / AR
   scroll-cinematique/vendor/      ← GSAP 3.13, ScrollTrigger, Lenis 1.3 (servis localement)
   assets/brand/                   ← logo vectoriel + favicons + image Open Graph
   assets/venue/                   ← vraies photos du lieu et des pizzas
   assets/menu/                    ← visuels éditoriaux pasta & cheesecake Lotus
 scripts/
   build-badge.mjs                 ← régénère le logo SVG + les PNG
+  sync-menu.mjs                   ← synchronise la carte trilingue depuis src/App.tsx
+  test-i18n.mjs                   ← 22 tests (3 langues, RTL, menu, onglets)
+  preview-langs.mjs               ← aperçus statiques des 3 langues
   build-og.mjs                    ← régénère l'image Open Graph
 docs/
   STACK-CINEMATIQUE-VERCEL.md     ← le playbook IA → code → Vercel (coûts, DNS, SEO)

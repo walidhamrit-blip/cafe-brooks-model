@@ -169,3 +169,44 @@ vers `dist/app/index.html`. Vite copie déjà `public/` dans `dist/`, donc les c
 `../assets/…` de la page cinématique restent valides.
 
 **Nom du projet Vercel :** `brooks-cafe-scrooling` → `https://brooks-cafe-scrooling.vercel.app`
+
+
+---
+
+## 8. Multilingue FR / EN / AR (version combinée)
+
+La page cinématique est **trilingue** et **RTL-aware**. Elle réunit :
+les effets de scroll (GSAP + Lenis) de la version cinématique, **et**
+le menu à prix réels + le multilingue de l'application React.
+
+### Comment ça marche
+
+| Fichier | Rôle |
+|---|---|
+| `public/scroll-cinematique/i18n.js` | dictionnaire FR / EN / AR + `dir` (ltr / rtl) |
+| `public/scroll-cinematique/index.html` | 107 attributs `data-i18n` + moteur de traduction |
+| `scripts/sync-menu.mjs` | extrait le MENU trilingue de `src/App.tsx` → JSON dans la page |
+
+- **Sélecteur** en haut à droite : `FR · EN · AR` ; le choix est mémorisé (`localStorage`)
+  et reflété dans l'URL (`?lang=ar`), donc partageable.
+- **Détection initiale** : `?lang=` → choix mémorisé → sinon **fr**, ou **ar** si le
+  navigateur est arabophone. L'anglais reste un choix explicite (marché local).
+- **RTL** : `dir="rtl"` sur `<html>`, grilles et listes miroir, polices arabes
+  **Cairo / Amiri**, interligne et `letter-spacing` ajustés (l'arabe n'a pas de capitales).
+- **Menu** : onglet « À la une » (6 plats, photos variées) + 3 onglets de catégorie
+  (Plats / Cafés / Desserts). Prix en DT, noms, descriptions et ingrédients dans les 3 langues.
+
+### Vérifier / régénérer
+
+```bash
+node scripts/test-i18n.mjs      # 22 tests : 3 langues, RTL, menu, onglets, clés manquantes
+node scripts/sync-menu.mjs      # après toute modification de MENU dans src/App.tsx
+node scripts/preview-langs.mjs  # docs/preview/apercu-{fr,en,ar}.html
+```
+
+### Ajouter une langue
+
+1. Copier le bloc `fr` dans `i18n.js`, changer les valeurs.
+2. Ajouter la clé au tableau `SUPPORTED` (implicite : les clés de `BROOKS_I18N`).
+3. Ajouter un bouton `<button data-lang="xx">` dans `.lang`.
+4. Pour une langue RTL, mettre `dir: "rtl"` dans son bloc.
