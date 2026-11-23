@@ -16,7 +16,7 @@
 
 ## 1. Ce que contient la démo (et pourquoi c'est « pareil » que Webflow)
 
-Ouvre `demo/cinematic/index.html`. Elle démontre les 5 patterns que 90 % des sites Webflow « cinématiques » utilisent :
+Ouvre `public/scroll-cinematique/index.html` (ou l'URL `/scroll-cinematique/`). Elle démontre les 5 patterns que 90 % des sites Webflow « cinématiques » utilisent :
 
 1. **Smooth scroll Lenis** — inertie au trackpad, `scrollTo` animé sur les ancres.
 2. **Hero parallaxe** — l'image recule (`yPercent`) pendant que le titre monte en lignes masquées (`overflow:hidden` + `yPercent:115`).
@@ -35,11 +35,12 @@ Ouvre `demo/cinematic/index.html`. Elle démontre les 5 patterns que 90 % des si
 ### La démo tourne localement
 
 ```bash
-cd demo/cinematic && python3 -m http.server 4321
-# → http://localhost:4321
+# depuis la racine du repo : sert public/ comme Vercel le fait
+python3 -m http.server 4321 --directory public
+# → http://localhost:4321/scroll-cinematique/
 ```
 
-Les libs sont dans `demo/cinematic/vendor/` (GSAP 3.13.0, ScrollTrigger, Lenis 1.3.11) : aucun CDN requis, aucune dépendance à installer pour voir le rendu.
+Les libs sont dans `public/scroll-cinematique/vendor/` (GSAP 3.13.0, ScrollTrigger, Lenis 1.3.11) : aucun CDN requis, aucune dépendance à installer pour voir le rendu.
 
 ---
 
@@ -142,9 +143,9 @@ Vercel → **Settings → Environment Variables** → `Preview` + `Production`.
 
 ## 6. Ce que je ferais ensuite, concrètement
 
-1. **Semaine 1** — Valider la démo sur mobile (le pin est le point sensible), remplacer les photos par les vraies.
+1. **Semaine 1** — Valider la démo sur mobile (le pin est le point sensible) et remplacer les 2 visuels éditoriaux (pasta, cheesecake) + les photos clients par les vraies photos Brooks — mêmes noms de fichiers, zéro code à toucher.
 2. **Semaine 2** — Migrer en Next.js, brancher Resend + WhatsApp, déployer sur Vercel avec le domaine.
 3. **Semaine 3** — SEO local : Google Business Profile, JSON-LD, pages « brunch Nabeul », « café terrasse Nabeul ».
 4. **Semaine 4** — Menu JSON + petite page admin protégée, ou Sanity si le client veut éditer seul.
 
-Le repo contient déjà `vercel.json` (option Vite) et ce document. La démo est dans `demo/cinematic/`.
+Le repo contient déjà `vercel.json` (option Vite) et ce document. La démo est dans `public/scroll-cinematique/`, les images et le logo dans `public/assets/` (voir `docs/ASSETS.md` pour la provenance exacte de chaque fichier).

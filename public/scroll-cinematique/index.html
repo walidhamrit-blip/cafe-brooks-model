@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>BROOKS Café Nabeul — Scroll cinématique (démo Next.js/GSAP)</title>
+<title>BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits</title>
 <meta name="description" content="Démo cinématique zéro abonnement : smooth scroll (Lenis) + GSAP ScrollTrigger, hébergée sur Vercel." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/brooks-badge-192.png" />
+<link rel="apple-touch-icon" href="/assets/brand/brooks-badge-192.png" />
+<meta property="og:image" content="/assets/brand/brooks-badge-512.png" />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
 <script>/* si le JS est coupé, aucun contenu ne reste caché */document.documentElement.classList.add("anim");</script>
 <style>
@@ -210,6 +213,33 @@
   html.anim .reveal{opacity:0;transform:translateY(28px)}
   html.anim .reveal-lines .ln > span{transform:translateY(110%);opacity:0}
 
+
+  /* ---------- PASTA ---------- */
+  #pasta{background:linear-gradient(to bottom,var(--travertine),#fff);padding:110px 0}
+  .pasta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:900px){.pasta-grid{grid-template-columns:1fr;gap:34px}}
+  .pasta-media{border-radius:26px;overflow:hidden;box-shadow:0 50px 90px -50px rgba(31,26,23,.6);aspect-ratio:4/3}
+  .pasta-media img{width:100%;height:100%;object-fit:cover;will-change:transform}
+  #pasta h2{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);margin:12px 0 0;font-weight:500;line-height:1.04}
+  #pasta h2 em{color:var(--terracotta);font-style:italic}
+  .pasta-copy p{color:var(--taupe);line-height:1.85;font-size:15px;margin-top:16px;max-width:46ch}
+  .pasta-notes{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+  .pasta-notes li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--espresso)}
+  .pasta-notes li span{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  /* ---------- ÉCRAN DE MARQUE (logo) ---------- */
+  #splash{
+    position:fixed;inset:0;z-index:200;background:#0E3B2B;display:grid;place-items:center;
+    transition:opacity .7s ease,visibility .7s ease;
+  }
+  #splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+  #splash img{width:min(46vw,190px);height:auto;filter:drop-shadow(0 24px 50px rgba(0,0,0,.45))}
+  #splash span{
+    display:block;text-align:center;margin-top:18px;font-size:9px;letter-spacing:.42em;color:rgba(246,239,223,.6);
+    text-transform:uppercase;font-weight:800
+  }
+  .brand-badge{width:38px;height:38px;border-radius:50%;box-shadow:0 4px 14px rgba(0,0,0,.22);flex:0 0 auto}
+
   /* grain */
   .grain::after{
     content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.03;
@@ -223,6 +253,9 @@
 </style>
 </head>
 <body class="grain">
+<div id="splash" aria-hidden="true">
+  <div><img src="/assets/brand/brooks-badge.svg" alt="" width="190" height="190" /><span>Nabeul • AFH2</span></div>
+</div>
 <div id="rail"></div>
 
 <!-- Bandeau de contexte : ce fichier est une PREUVE technique, à retirer sur le site final -->
@@ -234,7 +267,7 @@
 
 <header id="nav">
   <a class="brand" href="#hero">
-    <span class="dot">B</span>
+    <img class="brand-badge" src="/assets/brand/brooks-badge.svg" alt="Logo Brooks Café" width="38" height="38" />
     <span><b>Brooks Café</b><small>Nabeul • Cap Bon</small></span>
   </a>
   <nav class="links">
@@ -248,7 +281,7 @@
 
 <!-- ============ HERO ============ -->
 <section id="hero">
-  <div class="hero-media"><img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2400&auto=format&fit=crop" alt="Salle du Brooks Café Nabeul" /></div>
+  <div class="hero-media"><img src="/assets/venue/brooks-salon-columns.jpg" alt="Salle du Brooks Café Nabeul" /></div>
   <div class="wrap hero-inner">
     <p class="eyebrow">Nabeul • Cap Bon • Côte Méditerranéenne</p>
     <h1 class="hero-title">
@@ -256,7 +289,7 @@
       <span class="line"><span><em>gastronomie</em> vibrante</span></span>
       <span class="line"><span>sur la côte du Cap Bon.</span></span>
     </h1>
-    <p class="hero-sub">Latte espagnol, V60 d'origine unique, pizzas au feu de bois, brunch doré et desserts signatures — Food • Chill • Good vibes, tous les jours de 7h30 à minuit.</p>
+    <p class="hero-sub">Pizza • Pasta • Food • Fruits : nos vraies photos, notre vraie salle. Cheesecake Lotus, pasta fruits de mer, pizzas à partager — Food • Chill • Good vibes, tous les jours de 7h30 à minuit.</p>
     <div class="hero-actions">
       <a class="cta gold" href="#signature">Découvrir la carte →</a>
       <a class="cta ghost" href="#tour">Visite virtuelle</a>
@@ -280,20 +313,20 @@
   <div class="track-outer">
     <div class="track">
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?q=80&w=1400&auto=format&fit=crop" alt="Comptoir" />
-        <div class="card-body"><div class="num">01 — LE COMPTOIR</div><h3>Le Barista Bar</h3><p>Marbre travertin, arômes de Moka Sidamo, extraction à la seconde. Le cœur du rituel Brooks.</p><div class="price">V60 → 14 DT</div></div>
+        <img src="/assets/venue/brooks-salon-lumiere.jpg" alt="Le salon aux colonades et ses luminaires" />
+        <div class="card-body"><div class="num">01 — LE GRAND SALON</div><h3>Colonnes &amp; Lumière</h3><p>Les colonnes organiques, les suspensions en rotin et les alcôves vertes : la signature architecturale de Brooks.</p><div class="price">Capacité → 90 places</div></div>
       </article>
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=1400&auto=format&fit=crop" alt="Salon" />
-        <div class="card-body"><div class="num">02 — LE SALON</div><h3>Le Grand Salon</h3><p>Murs chauds, banquettes olive, lumière filtée — notre salon de lecture et de dîners lents.</p><div class="price">Grillades → 36 DT</div></div>
+        <img src="/assets/venue/brooks-salle-rouge.jpg" alt="La salle Brooks aux fauteuils rouges" />
+        <div class="card-body"><div class="num">02 — LA SALLE</div><h3>Rouge &amp; Velours</h3><p>Banquettes capitonnées, fauteuils rouges, palmiers et pierre chaude : l'adresse ouverte de 7h30 à minuit.</p><div class="price">Service continu</div></div>
       </article>
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?q=80&w=1400&auto=format&fit=crop" alt="Terrasse" />
-        <div class="card-body"><div class="num">03 — LA TERRASSE</div><h3>Olive Courtyard</h3><p>Golden hour sur le Cap Bon, oliviers et lumière ambrée — nos meilleures tables.</p><div class="price">Golden Hour → 17h</div></div>
+        <img src="/assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Pizza fruits de mer Brooks Café" />
+        <div class="card-body"><div class="num">03 — PIZZA • PASTA</div><h3>Pizza Fruits de Mer</h3><p>Pâte fine, fruits de mer, fromage fondu et basilic — l'une des pizzas qui a fait la réputation de la maison.</p><div class="price">Four → sur commande</div></div>
       </article>
       <article class="card">
-        <img src="https://images.unsplash.com/photo-1559925393-8be0ec4767c8?q=80&w=1400&auto=format&fit=crop" alt="Lounge" />
-        <div class="card-body"><div class="num">04 — LE LOUNGE</div><h3>VIP & Family</h3><p>Un écrin feutré pour les dimanches karaoké, anniversaires et tables en famille.</p><div class="price">Privatisation → sur demande</div></div>
+        <img src="/assets/venue/brooks-pizza-table.jpg" alt="Pizza quatre fromages servie en salle" />
+        <div class="card-body"><div class="num">04 — FROMAGÈRE</div><h3>Pizza Fromages</h3><p>Moelleux, fondante, à partager au centre de la table — servie sur planche de bois, comme il se doit.</p><div class="price">À partager → 2/3 pers.</div></div>
       </article>
     </div>
   </div>
@@ -328,13 +361,33 @@
 <section id="signature">
   <div class="stack-viewport">
     <div class="plate" id="plate">
-      <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?q=80&w=1600&auto=format&fit=crop" alt="Cheesecake San Sebastián" />
+      <img src="/assets/menu/cheesecake-lotus.jpg" alt="Cheesecake Lotus Brooks Café" />
     </div>
     <div class="plate-copy">
-      <p class="eyebrow">La signature</p>
-      <h2>Cheesecake<br />San Sebastián</h2>
-      <p>Crémeux, brûlé sur le dessus, servi tiède avec un espresso serré. Le dessert qui a fait notre réputation sur la côte.</p>
-      <span class="price-tag">24 DT • Cuit du jour</span>
+      <p class="eyebrow">La signature sucrée</p>
+      <h2>Cheesecake<br />Lotus</h2>
+      <p>Crémeux, fondant, irrésistible : base biscuitée, cœur crémeux et coulis Lotus qui coule doucement. Cuit chaque jour — servi avec un espresso serré.</p>
+      <span class="price-tag">Cuit du jour • À partager</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASTA FRUITS DE MER ============ -->
+<section id="pasta">
+  <div class="wrap pasta-grid">
+    <div class="pasta-media" id="pastaMedia">
+      <img src="/assets/menu/pasta-fruits-de-mer.jpg" alt="Pasta fruits de mer — crevettes, moules, tomates cerises" />
+    </div>
+    <div class="pasta-copy">
+      <p class="eyebrow">Le plat à partager</p>
+      <h2 class="serif">Pasta<br /><em>Fruits de mer</em></h2>
+      <p>Linguine al dente, crevettes snackées, moules, tomates cerises, ail, persil et une pointe de piment. Une assiette généreuse, pensée pour être posée au centre de la table.</p>
+      <ul class="pasta-notes">
+        <li><span></span>Crevettes &amp; moules du jour</li>
+        <li><span></span>Tomates cerises rôties, ail, persil</li>
+        <li><span></span>Fait à la commande</li>
+      </ul>
+      <a class="cta gold" href="#reserve" style="margin-top:22px">Réserver une table →</a>
     </div>
   </div>
 </section>
@@ -351,7 +404,7 @@
 
 <!-- ============ PARALLAX QUOTE ============ -->
 <section id="quote">
-  <div class="bg" id="quoteBg" style="background-image:url('https://images.unsplash.com/photo-1461023058943-07fcbe16d735?q=80&w=2000&auto=format&fit=crop')"></div>
+  <div class="bg" id="quoteBg" style="background-image:url('/assets/venue/brooks-salon-lumiere.jpg')"></div>
   <div class="wrap">
     <blockquote>« Le meilleur <em>latte espagnol</em> du Cap Bon — et la terrasse la plus douce au coucher du soleil. »</blockquote>
     <cite>— Review Google, Nabeul 2025</cite>
@@ -401,6 +454,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
+        <img src="/assets/brand/brooks-badge.svg" alt="Logo Brooks Café Nabeul" width="92" height="92" style="margin-bottom:14px" />
         <p class="big serif">Brooks Café<br />Nabeul</p>
         <p style="margin-top:12px;max-width:32ch">Food • Chill • Good vibes — ton spot préféré sur la côte du Cap Bon.</p>
       </div>
@@ -557,6 +611,8 @@
       $$(".reveal, .reveal-lines .ln > span").forEach((el) => { el.style.opacity = "1"; el.style.transform = "none"; });
     }
     watchCounters(); initForm();
+    const sp = document.querySelector("#splash");
+    if (sp) setTimeout(() => sp.classList.add("gone"), 400);
     return;
   }
 
@@ -635,6 +691,15 @@
     scrollTrigger: { trigger: "#signature", start: "top 65%", once: true },
   });
 
+  /* PASTA : parallaxe douce sur le plat */
+  const pastaImg = document.querySelector("#pastaMedia img");
+  if (pastaImg) {
+    gsap.fromTo(pastaImg, { yPercent: -6, scale: 1.08 }, {
+      yPercent: 6, scale: 1.08, ease: "none",
+      scrollTrigger: { trigger: "#pasta", start: "top bottom", end: "bottom top", scrub: true },
+    });
+  }
+
   /* PARALLAX CITATION */
   gsap.fromTo("#quoteBg", { yPercent: -10 }, {
     yPercent: 10, ease: "none",
@@ -643,6 +708,13 @@
 
   watchCounters();
   initForm();
+
+  const splash = document.querySelector("#splash");
+  if (splash) {
+    const hide = () => splash.classList.add("gone");
+    window.addEventListener("load", () => setTimeout(hide, 250));
+    setTimeout(hide, 1100);
+  }
 
   /* Le pin modifie les hauteurs : on recalcule après images + polices */
   window.addEventListener("load", () => ST.refresh());
