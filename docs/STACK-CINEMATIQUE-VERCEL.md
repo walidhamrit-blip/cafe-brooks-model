@@ -149,3 +149,23 @@ Vercel → **Settings → Environment Variables** → `Preview` + `Production`.
 4. **Semaine 4** — Menu JSON + petite page admin protégée, ou Sanity si le client veut éditer seul.
 
 Le repo contient déjà `vercel.json` (option Vite) et ce document. La démo est dans `public/scroll-cinematique/`, les images et le logo dans `public/assets/` (voir `docs/ASSETS.md` pour la provenance exacte de chaque fichier).
+
+---
+
+## 7. Structure publiée sur Vercel
+
+La page cinématique est la **page d'accueil**, l'application React est conservée sur `/app/`.
+
+| URL | Contenu | Fichier source |
+|---|---|---|
+| `/` | redirection 302 → `/scroll-cinematique/` | `vercel.json` |
+| `/scroll-cinematique/` | **site cinématique (page d'accueil)** | `public/scroll-cinematique/index.html` |
+| `/app/` | application React (menu, réservation, trilingue) | `src/App.tsx` (build → `dist/app/index.html`) |
+| `/assets/…` | images, logo, favicons, OG | `public/assets/` |
+| `/menu`, `/reserver` | raccourcis vers les ancres `#pasta`, `#reserve` | `vercel.json` |
+
+`npm run build` = `vite build` puis `scripts/after-build.mjs`, qui copie `dist/index.html`
+vers `dist/app/index.html`. Vite copie déjà `public/` dans `dist/`, donc les chemins
+`../assets/…` de la page cinématique restent valides.
+
+**Nom du projet Vercel :** `brooks-cafe-scrooling` → `https://brooks-cafe-scrooling.vercel.app`
