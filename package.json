@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/after-build.mjs",
     "preview": "vite preview",
     "badge": "node scripts/build-badge.mjs",
     "preview:cinematic": "python3 -m http.server 4321 --directory public"
