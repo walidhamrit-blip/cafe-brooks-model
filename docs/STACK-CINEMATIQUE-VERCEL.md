@@ -210,3 +210,32 @@ node scripts/preview-langs.mjs  # docs/preview/apercu-{fr,en,ar}.html
 2. Ajouter la clé au tableau `SUPPORTED` (implicite : les clés de `BROOKS_I18N`).
 3. Ajouter un bouton `<button data-lang="xx">` dans `.lang`.
 4. Pour une langue RTL, mettre `dir: "rtl"` dans son bloc.
+
+---
+
+## 9. SEO, partage social et anti-flash (correctifs)
+
+Appliqués après la mise en ligne du 23/11.
+
+| Problème constaté en production | Correctif |
+|---|---|
+| `og:image` en **chemin relatif** → WhatsApp/Facebook n'affichent pas l'aperçu | URLs **absolues** + `og:url`, `og:type`, `og:site_name`, `og:locale` (+ alternate `en_US`, `ar_TN`), `twitter:image` |
+| Flash **LTR → RTL** pour les visiteurs arabophones (la direction était posée par le JS en fin de `<body>`) | mini-script dans le `<head>` qui lit `?lang=` → `localStorage` → `navigator.language` et pose `lang`/`dir` **avant le premier paint** |
+| Contenu **dupliqué** : `/app/` (ancienne version) indexable en concurrence avec la page principale | en-tête `X-Robots-Tag: noindex, nofollow` sur `/app/(.*)` dans `vercel.json` |
+| Compteurs à **« 0 »** sans JavaScript (et pour les robots) | les vraies valeurs (`48`, `36`, `4.6`, `22K`) sont écrites en dur dans le HTML, l'animation ne fait que les faire monter |
+| Aucune donnée structurée | **JSON-LD `Restaurant`** (adresse, horaires, téléphone, note 4.6, menu complet) + **`FAQPage`** |
+| Liens multilingues invisibles pour Google | `canonical` + `hreflang` `fr` / `en` / `ar` / `x-default` |
+
+### Contrat de cohérence des prix
+
+Le JSON-LD **ne réinvente aucun prix** : `scripts/test-i18n.mjs` vérifie que **chacun des 12 plats**
+du `hasMenu` correspond exactement au prix de `#menu-data` (lui-même synchronisé depuis
+`src/App.tsx` par `sync-menu.mjs`). Toute divergence fait échouer les tests.
+
+```bash
+node scripts/test-i18n.mjs   # 32 tests
+```
+
+> ⚠️ **Domaine** : les URLs absolues pointent sur `https://cafe-brooks-model.vercel.app`.
+> Si tu ajoutes un domaine perso, remplace-les dans le `<head>` de
+> `public/scroll-cinematique/index.html` (5 occurrences) et dans le JSON-LD.

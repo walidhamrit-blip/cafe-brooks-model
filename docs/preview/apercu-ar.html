@@ -8,13 +8,53 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link rel="icon" type="image/png" sizes="192x192" href="../assets/brand/brooks-badge-192.png">
 <link rel="apple-touch-icon" href="../assets/brand/brooks-badge-192.png">
-<meta property="og:image" content="../assets/brand/og-brooks.jpg">
+<!-- partage social : URLs ABSOLUES (les crawlers ne résolvent pas les chemins relatifs) -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BROOKS Café Nabeul">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:locale:alternate" content="ar_TN">
+<meta property="og:title" content="BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits">
+<meta property="og:description" content="Food • Chill • Good vibes — ton spot préféré à Nabeul. Ouvert tous les jours 7h30 — 00h00. AFH2, Av. Habib Bourguiba.">
+<meta property="og:url" content="https://cafe-brooks-model.vercel.app/scroll-cinematique/">
+<meta property="og:image" content="https://cafe-brooks-model.vercel.app/assets/brand/og-brooks.jpg">
+<meta property="og:image:secure_url" content="https://cafe-brooks-model.vercel.app/assets/brand/og-brooks.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Brooks Café Nabeul — logo">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits">
+<meta name="twitter:description" content="Food • Chill • Good vibes — Nabeul, AFH2. 7h30 — 00h00.">
+<meta name="twitter:image" content="https://cafe-brooks-model.vercel.app/assets/brand/og-brooks.jpg">
+<link rel="canonical" href="https://cafe-brooks-model.vercel.app/scroll-cinematique/">
+<link rel="alternate" hreflang="fr" href="https://cafe-brooks-model.vercel.app/scroll-cinematique/?lang=fr">
+<link rel="alternate" hreflang="en" href="https://cafe-brooks-model.vercel.app/scroll-cinematique/?lang=en">
+<link rel="alternate" hreflang="ar" href="https://cafe-brooks-model.vercel.app/scroll-cinematique/?lang=ar">
+<link rel="alternate" hreflang="x-default" href="https://cafe-brooks-model.vercel.app/scroll-cinematique/">
 <meta name="theme-color" content="#0E3B2B">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=Cairo:wght@400;600;700;800&amp;family=Amiri:wght@400;700&amp;display=swap" rel="stylesheet">
-<script>/* si le JS est coupé, aucun contenu ne reste caché */document.documentElement.classList.add("anim");</script>
+<script>
+/* si le JS est coupé, aucun contenu ne reste caché */
+document.documentElement.classList.add("anim");
+/* Langue + direction appliquées AVANT le premier paint (pas de flash LTR → RTL).
+   Même logique que le moteur : ?lang= → mémoire → fr, ou ar si navigateur arabophone. */
+(function () {
+  try {
+    var supported = ["fr", "en", "ar"];
+    var url = new URLSearchParams(location.search).get("lang");
+    var saved = null;
+    try { saved = localStorage.getItem("brooks-lang"); } catch (e) {}
+    var nav = (navigator.language || "fr").slice(0, 2).toLowerCase();
+    var lang = supported.indexOf(url) >= 0 ? url
+      : supported.indexOf(saved) >= 0 ? saved
+      : (nav === "ar" ? "ar" : "fr");
+    var d = document.documentElement;
+    d.lang = lang;
+    d.dir = lang === "ar" ? "rtl" : "ltr";
+  } catch (e) { /* on garde les valeurs par défaut du HTML */ }
+})();
+</script>
 <style>
   :root{
     --ivory:#FAF6F0; --travertine:#F3ECE1; --espresso:#1F1A17; --taupe:#6B5E55;
@@ -388,6 +428,241 @@
     html.anim .reveal-lines .ln > span{opacity:1;transform:none}
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "@id": "https://cafe-brooks-model.vercel.app/#restaurant",
+  "name": "BROOKS Café Nabeul",
+  "alternateName": "بروكس كافيه نابل",
+  "description": "Café de spécialité et cuisine à la carte à Nabeul : pizza, pasta, brunch, cheesecake Lotus. Food • Chill • Good vibes.",
+  "url": "https://cafe-brooks-model.vercel.app/scroll-cinematique/",
+  "image": [
+    "https://cafe-brooks-model.vercel.app/assets/venue/brooks-salon-columns.jpg",
+    "https://cafe-brooks-model.vercel.app/assets/venue/brooks-salle-rouge.jpg",
+    "https://cafe-brooks-model.vercel.app/assets/menu/cheesecake-lotus.jpg"
+  ],
+  "logo": "https://cafe-brooks-model.vercel.app/assets/brand/brooks-badge.svg",
+  "telephone": "+21693301771",
+  "priceRange": "$$",
+  "currenciesAccepted": "TND",
+  "paymentAccepted": "Cash, Credit Card",
+  "servesCuisine": [
+    "Café",
+    "Italienne",
+    "Méditerranéenne",
+    "Pizza",
+    "Pâtisserie"
+  ],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "AFH2, Avenue Habib Bourguiba",
+    "addressLocality": "Nabeul",
+    "postalCode": "8000",
+    "addressRegion": "Nabeul",
+    "addressCountry": "TN"
+  },
+  "hasMap": "https://www.google.com/maps/search/Brooks+Cafe+Nabeul+AFH2",
+  "sameAs": [
+    "https://www.instagram.com/broookscafe/"
+  ],
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "07:30",
+      "closes": "00:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.6",
+    "bestRating": "5",
+    "ratingCount": "120"
+  },
+  "acceptsReservations": "True",
+  "menu": "https://cafe-brooks-model.vercel.app/scroll-cinematique/#menu",
+  "hasMenu": {
+    "@type": "Menu",
+    "hasMenuSection": [
+      {
+        "@type": "MenuSection",
+        "name": "Plats • Pizza • Pasta",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Burger Signature Brooks",
+            "offers": {
+              "@type": "Offer",
+              "price": "32",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Suprême de Poulet Grillé",
+            "offers": {
+              "@type": "Offer",
+              "price": "36",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Margherita di Nabeul",
+            "offers": {
+              "@type": "Offer",
+              "price": "24",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Linguine Crémeuse du Jardin",
+            "offers": {
+              "@type": "Offer",
+              "price": "29",
+              "priceCurrency": "TND"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Cafés & boissons",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "V60 Origine Unique",
+            "offers": {
+              "@type": "Offer",
+              "price": "14",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Latte Espagnol Doré",
+            "offers": {
+              "@type": "Offer",
+              "price": "12",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Nuage Glacé Caramel",
+            "offers": {
+              "@type": "Offer",
+              "price": "16",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Mojito Vierge & Éclat Mangue",
+            "offers": {
+              "@type": "Offer",
+              "price": "15",
+              "priceCurrency": "TND"
+            }
+          }
+        ]
+      },
+      {
+        "@type": "MenuSection",
+        "name": "Desserts",
+        "hasMenuItem": [
+          {
+            "@type": "MenuItem",
+            "name": "Parfait Mangue Passion",
+            "offers": {
+              "@type": "Offer",
+              "price": "22",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Cheesecake San Sebastián",
+            "offers": {
+              "@type": "Offer",
+              "price": "24",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Fondant Chocolat Minuit",
+            "offers": {
+              "@type": "Offer",
+              "price": "20",
+              "priceCurrency": "TND"
+            }
+          },
+          {
+            "@type": "MenuItem",
+            "name": "Panier Croissants Dorés",
+            "offers": {
+              "@type": "Offer",
+              "price": "18",
+              "priceCurrency": "TND"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Quels sont les horaires de Brooks Café Nabeul ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Brooks Café est ouvert tous les jours de 7h30 à minuit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Où se trouve Brooks Café à Nabeul ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "AFH2, Avenue Habib Bourguiba, Nabeul 8000, Tunisie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Comment réserver une table chez Brooks ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Par téléphone ou WhatsApp au +216 93 301 771, ou via le formulaire du site qui ouvre WhatsApp avec la demande pré-remplie."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quels sont les plats signatures ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Le cheesecake Lotus, la pasta fruits de mer, la pizza fruits de mer, le latte espagnol et le V60 d'origine unique."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="grain">
 <div id="splash" aria-hidden="true" style="animation:splashOut .9s ease 1.6s forwards">
@@ -894,10 +1169,10 @@
 <!-- ============ STATS ============ -->
 <section id="stats">
   <div class="wrap stats">
-    <div class="stat"><b data-count="48">0</b><span data-i18n="stats.s1">طبق مميز</span></div>
-    <div class="stat"><b data-count="36">0</b><span data-i18n="stats.s2">قهوة ومشروب</span></div>
-    <div class="stat"><b data-count="46" data-decimal="1">0</b><span data-i18n="stats.s3">تقييم جوجل</span></div>
-    <div class="stat"><b data-count="22" data-suffix="K">0</b><span data-i18n="stats.s4">ضيف شهرياً</span></div>
+    <div class="stat"><b data-count="48">48</b><span data-i18n="stats.s1">طبق مميز</span></div>
+    <div class="stat"><b data-count="36">36</b><span data-i18n="stats.s2">قهوة ومشروب</span></div>
+    <div class="stat"><b data-count="46" data-decimal="1">4.6</b><span data-i18n="stats.s3">تقييم جوجل</span></div>
+    <div class="stat"><b data-count="22" data-suffix="K">22K</b><span data-i18n="stats.s4">ضيف شهرياً</span></div>
   </div>
 </section>
 
