@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,7 +14,7 @@
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0E3B2B" />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Cairo:wght@400;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
 <script>/* si le JS est coupé, aucun contenu ne reste caché */document.documentElement.classList.add("anim");</script>
 <style>
   :root{
@@ -22,7 +22,32 @@
     --olive:#2D4A3E; --gold:#C59B27; --gold-light:#F5C26B; --terracotta:#C86D51; --cream:#FFFDF8;
     --serif:"Cormorant Garamond", Georgia, serif;
     --sans:"Plus Jakarta Sans", system-ui, sans-serif;
+  --serif-active:var(--serif);
+  --sans-active:var(--sans);
   }
+  /* ARABE : polices dédiées + interligne plus généreux */
+  html[lang="ar"]{
+    --serif-active:"Amiri", "Cairo", Georgia, serif;
+    --sans-active:"Cairo", system-ui, sans-serif;
+  }
+  html[lang="ar"] body{font-family:var(--sans-active)}
+  html[lang="ar"] .serif,
+  html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,
+  html[lang="ar"] blockquote{font-family:var(--serif-active);letter-spacing:0}
+  html[lang="ar"] .eyebrow,html[lang="ar"] .num,html[lang="ar"] .price,
+  html[lang="ar"] .cta,html[lang="ar"] nav.links a{letter-spacing:0;text-transform:none;font-weight:700}
+  html[lang="ar"] p{line-height:1.95}
+  html[lang="ar"] .hero-title{line-height:1.25}
+  html[lang="ar"] .hero-title em{font-style:normal;color:var(--gold-light)}
+  /* miroir : le sens de lecture est géré par dir, on ajuste juste les éléments visuels */
+  html[dir="rtl"] .scroll-hint,
+  html[dir="rtl"] .hero-inner,
+  html[dir="rtl"] .pasta-copy{text-align:right}
+  html[dir="rtl"] .pasta-notes li{flex-direction:row-reverse;justify-content:flex-end}
+  html[dir="rtl"] .pillar{flex-direction:row-reverse;text-align:right}
+  html[dir="rtl"] .foot-grid{text-align:right}
+  html[dir="rtl"] .legal{direction:rtl}
+  html[lang="ar"] .card-body h3{font-family:var(--serif-active);font-size:1.7rem}
   *{box-sizing:border-box}
   html{background:#1F1A17}
   body{
@@ -291,6 +316,68 @@
   html:not(.anim) #splash{display:none}
   html:not(.anim) .reveal,html:not(.anim) .reveal-lines .ln > span{opacity:1 !important;transform:none !important}
 
+
+  /* ---------- SÉLECTEUR DE LANGUE ---------- */
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;backdrop-filter:blur(8px)}
+  header#nav.solid .lang{background:rgba(45,74,62,.07);border-color:rgba(45,74,62,.18)}
+  .lang button{
+    background:none;border:0;cursor:pointer;border-radius:999px;padding:6px 10px;
+    font:800 10px/1 var(--sans);letter-spacing:.1em;color:rgba(255,255,255,.75);transition:all .25s ease;
+  }
+  header#nav.solid .lang button{color:var(--taupe)}
+  .lang button.on{background:var(--gold-light);color:var(--espresso);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  html[lang="ar"] .lang button{font-family:var(--sans-active);letter-spacing:0}
+
+  /* ---------- MENU ---------- */
+  #menu{padding:110px 0 120px;background:linear-gradient(to bottom,#fff,var(--ivory))}
+  .menu-head{max-width:64ch}
+  .menu-head h2{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);margin:12px 0 0;font-weight:500;line-height:1.05}
+  .menu-head h2 em{color:var(--terracotta);font-style:italic}
+  .menu-head .lead{color:var(--taupe);line-height:1.8;margin-top:14px;font-size:15px;max-width:58ch}
+  .menu-tabs{position:relative;display:inline-flex;gap:4px;margin-top:30px;padding:5px;border-radius:999px;background:var(--travertine);border:1px solid rgba(180,140,85,.28)}
+  .menu-tab{position:relative;z-index:2;background:none;border:0;cursor:pointer;border-radius:999px;padding:11px 20px;font:800 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);transition:color .3s ease}
+  .menu-tab.on{color:#fff}
+  .menu-tab-ink{position:absolute;z-index:1;top:5px;bottom:5px;border-radius:999px;background:var(--olive);transition:left .38s cubic-bezier(.22,1,.36,1),width .38s cubic-bezier(.22,1,.36,1)}
+  html[lang="ar"] .menu-tab{font-family:var(--sans-active);letter-spacing:0;text-transform:none;font-size:13px}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px;transition:opacity .3s ease}
+  .menu-grid.is-gallery{grid-template-columns:repeat(3,1fr)}
+  .menu-grid.is-gallery .dish{grid-template-columns:1fr;gap:12px;padding:12px;align-items:start}
+  .menu-grid.is-gallery .dish img{width:100%;height:150px;border-radius:14px}
+  .menu-grid.is-gallery .dish .p{grid-column:auto;justify-self:start}
+  @media(max-width:1100px){.menu-grid.is-gallery{grid-template-columns:1fr 1fr}}
+  @media(max-width:700px){.menu-grid.is-gallery{grid-template-columns:1fr}}
+  /* arrivée en cascade des cartes */
+  .dish{opacity:0;transform:translateY(16px);animation:dishIn .55s cubic-bezier(.22,1,.36,1) forwards}
+  .dish:nth-child(1){animation-delay:.02s}.dish:nth-child(2){animation-delay:.06s}
+  .dish:nth-child(3){animation-delay:.10s}.dish:nth-child(4){animation-delay:.14s}
+  .dish:nth-child(5){animation-delay:.18s}.dish:nth-child(6){animation-delay:.22s}
+  @keyframes dishIn{to{opacity:1;transform:none}}
+  @media(max-width:860px){.menu-grid{grid-template-columns:1fr}}
+  .dish{
+    display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;
+    background:#fff;border:1px solid rgba(180,140,85,.22);border-radius:20px;padding:14px;
+    transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+  }
+  .dish:hover{transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(31,26,23,.5);border-color:rgba(197,155,39,.5)}
+  .dish img{width:96px;height:96px;border-radius:14px;object-fit:cover;background:var(--travertine)}
+  .dish h3{font-family:var(--serif);font-size:1.22rem;margin:0;font-weight:600;line-height:1.2}
+  .dish p{margin:5px 0 0;font-size:12.5px;line-height:1.55;color:var(--taupe);font-weight:400}
+  .dish .ing{margin-top:7px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+  .dish .tag{display:inline-block;margin-top:7px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--olive);background:rgba(45,74,62,.08);border-radius:999px;padding:4px 9px}
+  .dish .p{font-family:var(--serif);font-size:1.28rem;font-weight:700;color:var(--espresso);white-space:nowrap;align-self:start}
+  html[lang="ar"] .dish h3,html[lang="ar"] .dish .p{font-family:var(--serif-active)}
+  html[lang="ar"] .dish .ing,html[lang="ar"] .dish .tag{letter-spacing:0;text-transform:none;font-size:11px}
+  html[dir="rtl"] .dish{grid-template-columns:auto 1fr 96px}
+  html[dir="rtl"] .dish .p{text-align:left}
+  .menu-noscript{margin-top:20px;font-size:13px;color:var(--taupe)}
+  @media(max-width:520px){
+    .dish{grid-template-columns:74px 1fr;gap:12px}
+    .dish img{width:74px;height:74px}
+    .dish .p{grid-column:2;justify-self:start;margin-top:2px}
+    .menu-tab{padding:10px 14px;font-size:10px}
+  }
+
   /* grain */
   .grain::after{
     content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.03;
@@ -305,98 +392,106 @@
 </head>
 <body class="grain">
 <div id="splash" aria-hidden="true" style="animation:splashOut .9s ease 1.6s forwards">
-  <div><img src="../assets/brand/brooks-badge.svg" alt="" width="190" height="190" /><span>Nabeul • AFH2</span></div>
+  <div><img src="../assets/brand/brooks-badge.svg" alt="" width="190" height="190" /><span data-i18n="splash.place">Nabeul • AFH2</span></div>
 </div>
 <div id="rail"></div>
 
 <header id="nav">
   <a class="brand" href="#hero">
     <img class="brand-badge" src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café" width="38" height="38" />
-    <span><b>Brooks Café</b><small>Nabeul • Cap Bon</small></span>
+    <span><b>Brooks Café</b><small data-i18n="brand.tag">Nabeul • Cap Bon</small></span>
   </a>
   <nav class="links">
-    <a href="#tour">Visite</a>
-    <a href="#story">Histoire</a>
-    <a href="#signature">Signature</a>
-    <a href="#reserve">Réserver</a>
+    <a href="#tour" data-i18n="nav.tour">Visite</a>
+    <a href="#story" data-i18n="nav.story">Histoire</a>
+    <a href="#menu" data-i18n="nav.menu">Carte</a>
+    <a href="#signature" data-i18n="nav.signature">Signature</a>
+    <a href="#reserve" data-i18n="nav.reserve">Réserver</a>
   </nav>
-  <a class="cta" href="#reserve">Réserver <span>→</span></a>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Langue / Language / اللغة">
+      <button type="button" data-lang="fr" class="on">FR</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+    <a class="cta" href="#reserve" data-i18n="nav.cta">Réserver une table</a>
+  </div>
 </header>
 
 <!-- ============ HERO ============ -->
 <section id="hero">
   <div class="hero-media"><img src="../assets/venue/brooks-salon-columns.jpg" alt="Salle du Brooks Café Nabeul" /></div>
   <div class="wrap hero-inner">
-    <p class="eyebrow">Nabeul • Cap Bon • Côte Méditerranéenne</p>
+    <p class="eyebrow" data-i18n="hero.eyebrow">Nabeul • Cap Bon • Côte Méditerranéenne</p>
     <h1 class="hero-title">
-      <span class="line"><span>Café de spécialité,</span></span>
-      <span class="line"><span><em>gastronomie</em> vibrante</span></span>
-      <span class="line"><span>sur la côte du Cap Bon.</span></span>
+      <span class="line"><span data-i18n="hero.l1">Café de spécialité,</span></span>
+      <span class="line"><span data-i18n="hero.l2"><em>gastronomie</em> vibrante</span></span>
+      <span class="line"><span data-i18n="hero.l3">sur la côte du Cap Bon.</span></span>
     </h1>
-    <p class="hero-sub">Pizza • Pasta • Food • Fruits : nos vraies photos, notre vraie salle. Cheesecake Lotus, pasta fruits de mer, pizzas à partager — Food • Chill • Good vibes, tous les jours de 7h30 à minuit.</p>
+    <p class="hero-sub" data-i18n="hero.sub">Pizza • Pasta • Food • Fruits : nos vraies photos, notre vraie salle. Cheesecake Lotus, pasta fruits de mer, pizzas à partager — Food • Chill • Good vibes, tous les jours de 7h30 à minuit.</p>
     <div class="hero-actions">
-      <a class="cta gold" href="#signature">Découvrir la carte →</a>
-      <a class="cta ghost" href="#tour">Visite virtuelle</a>
+      <a class="cta gold" href="#menu" data-i18n="hero.cta1">Découvrir la carte</a>
+      <a class="cta ghost" href="#tour" data-i18n="hero.cta2">Visite virtuelle</a>
     </div>
     <div class="hero-meta">
-      <span><i></i> Ouvert 7j/7 • 7h30 — 00h00</span>
-      <span><i></i> 4.6 ★ Google</span>
-      <span><i></i> AFH2, Av. Habib Bourguiba, Nabeul</span>
+      <span><i></i> <b data-i18n="hero.open">Ouvert 7j/7 • 7h30 — 00h00</b></span>
+      <span><i></i> <b data-i18n="hero.rating">4.6 ★ Google</b></span>
+      <span><i></i> <b data-i18n="hero.addr">AFH2, Av. Habib Bourguiba, Nabeul</b></span>
     </div>
   </div>
-  <div class="scroll-hint"><span>Scroll</span><span class="bar"></span></div>
+  <div class="scroll-hint"><span data-i18n="hero.scroll">Scroll</span><span class="bar"></span></div>
 </section>
 
 <!-- ============ TOUR HORIZONTAL PINNÉ ============ -->
 <section id="tour">
   <div class="wrap pin-head">
-    <p class="eyebrow">Visite guidée • Scroll horizontal</p>
-    <h2 class="serif">Traversez le café <em style="color:var(--terracotta)">d'un seul geste</em></h2>
-    <p class="lead">Section épinglée : le scroll vertical pilote un travelling horizontal. C'est le pattern GSAP ScrollTrigger le plus « cinéma » — et il tourne à 60 fps sur mobile comme sur desktop.</p>
+    <p class="eyebrow" data-i18n="tour.eyebrow">Visite guidée • Scroll horizontal</p>
+    <h2 class="serif" data-i18n="tour.title">Traversez le café <em>d'un seul geste</em></h2>
+    <p class="lead" data-i18n="tour.lead">Section épinglée : le scroll vertical pilote un travelling horizontal. Nos vraies salles, nos vraies pizzas — glissez pour entrer.</p>
   </div>
   <div class="track-outer">
     <div class="track">
       <article class="card">
         <img src="../assets/venue/brooks-salon-lumiere.jpg" alt="Le salon aux colonades et ses luminaires" />
-        <div class="card-body"><div class="num">01 — LE GRAND SALON</div><h3>Colonnes &amp; Lumière</h3><p>Les colonnes organiques, les suspensions en rotin et les alcôves vertes : la signature architecturale de Brooks.</p><div class="price">Capacité → 90 places</div></div>
+        <div class="card-body"><div class="num" data-i18n="tour.c1n">01 — LE GRAND SALON</div><h3 data-i18n="tour.c1t">Colonnes &amp; Lumière</h3><p data-i18n="tour.c1d">Les colonnes organiques, les suspensions en rotin et les alcôves vertes : la signature architecturale de Brooks.</p><div class="price" data-i18n="tour.c1p">Capacité → 90 places</div></div>
       </article>
       <article class="card">
         <img src="../assets/venue/brooks-salle-rouge.jpg" alt="La salle Brooks aux fauteuils rouges" />
-        <div class="card-body"><div class="num">02 — LA SALLE</div><h3>Rouge &amp; Velours</h3><p>Banquettes capitonnées, fauteuils rouges, palmiers et pierre chaude : l'adresse ouverte de 7h30 à minuit.</p><div class="price">Service continu</div></div>
+        <div class="card-body"><div class="num" data-i18n="tour.c2n">02 — LA SALLE</div><h3 data-i18n="tour.c2t">Rouge &amp; Velours</h3><p data-i18n="tour.c2d">Banquettes capitonnées, fauteuils rouges, palmiers et pierre chaude : l'adresse ouverte de 7h30 à minuit.</p><div class="price" data-i18n="tour.c2p">Service continu</div></div>
       </article>
       <article class="card">
         <img src="../assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Pizza fruits de mer Brooks Café" />
-        <div class="card-body"><div class="num">03 — PIZZA • PASTA</div><h3>Pizza Fruits de Mer</h3><p>Pâte fine, fruits de mer, fromage fondu et basilic — l'une des pizzas qui a fait la réputation de la maison.</p><div class="price">Four → sur commande</div></div>
+        <div class="card-body"><div class="num" data-i18n="tour.c3n">03 — PIZZA • PASTA</div><h3 data-i18n="tour.c3t">Pizza Fruits de Mer</h3><p data-i18n="tour.c3d">Pâte fine, fruits de mer, fromage fondu et basilic — l'une des pizzas qui a fait la réputation de la maison.</p><div class="price" data-i18n="tour.c3p">Four → sur commande</div></div>
       </article>
       <article class="card">
         <img src="../assets/venue/brooks-pizza-table.jpg" alt="Pizza quatre fromages servie en salle" />
-        <div class="card-body"><div class="num">04 — FROMAGÈRE</div><h3>Pizza Fromages</h3><p>Moelleux, fondante, à partager au centre de la table — servie sur planche de bois, comme il se doit.</p><div class="price">À partager → 2/3 pers.</div></div>
+        <div class="card-body"><div class="num" data-i18n="tour.c4n">04 — FROMAGÈRE</div><h3 data-i18n="tour.c4t">Pizza Fromages</h3><p data-i18n="tour.c4d">Moelleux, fondante, à partager au centre de la table — servie sur planche de bois, comme il se doit.</p><div class="price" data-i18n="tour.c4p">À partager → 2/3 pers.</div></div>
       </article>
     </div>
   </div>
-  <div class="wrap pin-hint">↔ Continuez à scroller — la page se déplace horizontalement</div>
+  <div class="wrap pin-hint" data-i18n="tour.hint" data-i18n-mobile="tour.hintMobile">↔ Continuez à scroller — la page se déplace horizontalement</div>
 </section>
 
 <!-- ============ STORY ============ -->
 <section id="story">
   <div class="wrap story-grid">
     <div>
-      <p class="eyebrow">Notre histoire à Nabeul</p>
+      <p class="eyebrow" data-i18n="story.eyebrow">Notre histoire à Nabeul</p>
       <h2 class="reveal-lines">
-        <span class="ln"><span>Une maison</span></span>
-        <span class="ln"><span>de café &amp; <em>gastronomie</em></span></span>
-        <span class="ln"><span>baignée de soleil.</span></span>
+        <span class="ln"><span data-i18n="story.l1">Une maison</span></span>
+        <span class="ln"><span data-i18n="story.l2">de café &amp; <em>gastronomie</em></span></span>
+        <span class="ln"><span data-i18n="story.l3">baignée de soleil.</span></span>
       </h2>
       <div class="pillars">
-        <div class="pillar reveal"><i></i><div><b>Arabica de spécialité</b><small>V60, espresso, latte espagnol — micro-lots torréfiés, extraits avec précision.</small></div></div>
-        <div class="pillar reveal"><i></i><div><b>Cuisine fraîche 7j/7</b><small>Pizzas au feu de bois, grillades du Cap Bon, brunchs généreux à toute heure.</small></div></div>
-        <div class="pillar reveal"><i></i><div><b>Trois univers, un seul rituel</b><small>Terrasse oliviers, Grand Salon et Lounge VIP pour chaque moment de la journée.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b1">Arabica de spécialité</b><small data-i18n="story.b1d">V60, espresso, latte espagnol — micro-lots torréfiés, extraits avec précision.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b2">Cuisine fraîche 7j/7</b><small data-i18n="story.b2d">Pizzas au feu de bois, grillades du Cap Bon, brunchs généreux à toute heure.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b3">Trois univers, un seul rituel</b><small data-i18n="story.b3d">Terrasse oliviers, Grand Salon et Lounge VIP pour chaque moment de la journée.</small></div></div>
       </div>
     </div>
     <div class="story-copy">
-      <p class="reveal">Sur les boulevards élégants de Nabeul, Brooks est devenu le salon du Cap Bon : pierre calcaire chaude, verdure d'oliviers et parfum d'arabica fraîchement moulu, du matin à minuit.</p>
-      <p class="reveal">Du V60 versé lentement aux lattes espagnols soyeux, des pizzas au feu de bois aux créations mangue &amp; cheesecake San Sebastián — tout est frais, vibrant et fait pour être partagé.</p>
-      <p class="reveal" style="font-weight:700;color:var(--espresso)">Food • Chill • Good vibes — ton spot préféré à Nabeul.</p>
+      <p class="reveal" data-i18n="story.p1">Sur les boulevards élégants de Nabeul, Brooks est devenu le salon du Cap Bon : pierre calcaire chaude, verdure d'oliviers et parfum d'arabica fraîchement moulu, du matin à minuit.</p>
+      <p class="reveal" data-i18n="story.p2">Du V60 versé lentement aux lattes espagnols soyeux, des pizzas au feu de bois aux créations mangue &amp; cheesecake — tout est frais, vibrant et fait pour être partagé.</p>
+      <p class="reveal" style="font-weight:700;color:var(--espresso)" data-i18n="story.p3">Food • Chill • Good vibes — ton spot préféré à Nabeul.</p>
     </div>
   </div>
 </section>
@@ -408,10 +503,10 @@
       <img src="../assets/menu/cheesecake-lotus.jpg" alt="Cheesecake Lotus Brooks Café" />
     </div>
     <div class="plate-copy">
-      <p class="eyebrow">La signature sucrée</p>
-      <h2>Cheesecake<br />Lotus</h2>
-      <p>Crémeux, fondant, irrésistible : base biscuitée, cœur crémeux et coulis Lotus qui coule doucement. Cuit chaque jour — servi avec un espresso serré.</p>
-      <span class="price-tag">Cuit du jour • À partager</span>
+      <p class="eyebrow" data-i18n="sig.eyebrow">La signature sucrée</p>
+      <h2 data-i18n="sig.title">Cheesecake<br />Lotus</h2>
+      <p data-i18n="sig.text">Crémeux, fondant, irrésistible : base biscuitée, cœur crémeux et coulis Lotus qui coule doucement. Cuit chaque jour — servi avec un espresso serré.</p>
+      <span class="price-tag" data-i18n="sig.tag">Cuit du jour • À partager</span>
     </div>
   </div>
 </section>
@@ -423,26 +518,353 @@
       <img src="../assets/menu/pasta-fruits-de-mer.jpg" alt="Pasta fruits de mer — crevettes, moules, tomates cerises" />
     </div>
     <div class="pasta-copy">
-      <p class="eyebrow">Le plat à partager</p>
-      <h2 class="serif">Pasta<br /><em>Fruits de mer</em></h2>
-      <p>Linguine al dente, crevettes snackées, moules, tomates cerises, ail, persil et une pointe de piment. Une assiette généreuse, pensée pour être posée au centre de la table.</p>
+      <p class="eyebrow" data-i18n="pasta.eyebrow">Le plat à partager</p>
+      <h2 class="serif" data-i18n="pasta.title">Pasta<br /><em>Fruits de mer</em></h2>
+      <p data-i18n="pasta.text">Linguine al dente, crevettes snackées, moules, tomates cerises, ail, persil et une pointe de piment. Une assiette généreuse, pensée pour être posée au centre de la table.</p>
       <ul class="pasta-notes">
-        <li><span></span>Crevettes &amp; moules du jour</li>
-        <li><span></span>Tomates cerises rôties, ail, persil</li>
-        <li><span></span>Fait à la commande</li>
+        <li><span></span><b data-i18n="pasta.n1">Crevettes &amp; moules du jour</b></li>
+        <li><span></span><b data-i18n="pasta.n2">Tomates cerises rôties, ail, persil</b></li>
+        <li><span></span><b data-i18n="pasta.n3">Fait à la commande</b></li>
       </ul>
-      <a class="cta gold" href="#reserve" style="margin-top:22px">Réserver une table →</a>
+      <a class="cta gold" href="#reserve" style="margin-top:22px" data-i18n="pasta.cta">Réserver une table</a>
     </div>
+  </div>
+</section>
+
+<!-- MENU_DATA_START -->
+<script id="menu-data" type="application/json">
+{
+  "mains": [
+    {
+      "fr": "Burger Signature Brooks",
+      "en": "Brooks Signature Burger",
+      "ar": "برجر بروكس المميز",
+      "dfr": "Bœuf smashé, cheddar affiné, oignons caramélisés, sauce maison, brioché toastée + frites dorées.",
+      "den": "Smashed beef, aged cheddar, caramelised onions, house sauce, toasted brioche + golden fries.",
+      "dar": "لحم مدخن، شيدر معتق، بصل مكرمل، صلصة البيت، بريوش محمص + بطاطس ذهبية.",
+      "ifr": "Brioche • Cheddar • Roquette • Sauce maison",
+      "ien": "Brioche • Cheddar • Rocket • House sauce",
+      "iar": "بريوش • شيدر • جرجير • صلصة البيت",
+      "price": "32 DT",
+      "tagfr": "Le Plus Aimé",
+      "tagen": "Most Loved",
+      "tagar": "الأكثر حباً",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Suprême de Poulet Grillé",
+      "en": "Grilled Chicken Supreme",
+      "ar": "صدر الدجاج المشوي",
+      "dfr": "Poulet mariné aux herbes, huile d'olive du Cap Bon, légumes grillés, jus corsé.",
+      "den": "Herb-marinated chicken, Cap Bon olive oil, charred vegetables, jus corsé.",
+      "dar": "دجاج متبل بالأعشاب، زيت زيتون الوطن القبلي، خضار مشوية، صلصة مركزة.",
+      "ifr": "Fermier • Thym • Citron • Huile d'olive",
+      "ien": "Free-range • Thyme • Lemon • Olive oil",
+      "iar": "بلدي • زعتر • ليمون • زيت زيتون",
+      "price": "36 DT",
+      "tagfr": "Choix du Chef",
+      "tagen": "Chef's Pick",
+      "tagar": "اختيار الشيف",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Margherita di Nabeul",
+      "en": "Margherita di Nabeul",
+      "ar": "مارغريتا نابل",
+      "dfr": "Au feu de bois, tomate San Marzano, fior di latte, basilic, huile d'olive pressée à froid.",
+      "den": "Wood-fired, San Marzano tomato, fior di latte, basil, cold-pressed olive oil.",
+      "dar": "على الحطب، طماطم سان مارزانو، فيور دي لاتيه، حبق، زيت زيتون بكر.",
+      "ifr": "Feu de bois • Basilic • Fior di latte",
+      "ien": "Wood fire • Basil • Fior di latte",
+      "iar": "حطب • حبق • فيور دي لاتيه",
+      "price": "24 DT",
+      "tagfr": "Feu de Bois",
+      "tagen": "Wood-Fired",
+      "tagar": "على الحطب",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Linguine Crémeuse du Jardin",
+      "en": "Creamy Garden Linguine",
+      "ar": "لينغويني كريمية بالخضار",
+      "dfr": "Crème soyeuse au parmesan, tomates confites, basilic, pignons toastés.",
+      "den": "Silky parmesan cream, sun-blushed tomatoes, basil, toasted pine nuts.",
+      "dar": "كريمة بارميزان حريرية، طماطم مجففة، حبق، صنوبر محمص.",
+      "ifr": "Parmesan • Basilic • Pignons",
+      "ien": "Parmesan • Basil • Pine nuts",
+      "iar": "بارميزان • حبق • صنوبر",
+      "price": "29 DT",
+      "tagfr": "Végétarien",
+      "tagen": "Vegetarian",
+      "tagar": "نباتي",
+      "img": "/assets/menu/pasta-fruits-de-mer.jpg"
+    }
+  ],
+  "coffee": [
+    {
+      "fr": "V60 Origine Unique",
+      "en": "Single-Origin V60 Pour-Over",
+      "ar": "تقطير V60 مصدر واحد",
+      "dfr": "Éthiopie Yirgacheffe, floraison lente, floral & abricot — versé à table.",
+      "den": "Ethiopia Yirgacheffe, slow bloom, floral & apricot — brewed tableside.",
+      "dar": "إثيوبيا يرغاشيف، تقطير بطيء، زهري ومشمش — يُحضَّر أمام الطاولة.",
+      "ifr": "Yirgacheffe • 92°C • 3:00 min",
+      "ien": "Yirgacheffe • 92°C • 3:00 min",
+      "iar": "يرغاشيف • 92° • 3:00 د",
+      "price": "14 DT",
+      "tagfr": "Slow Brew",
+      "tagen": "Slow Brew",
+      "tagar": "تقطير بطيء",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Latte Espagnol Doré",
+      "en": "Spanish Golden Latte",
+      "ar": "لاتيه إسباني ذهبي",
+      "dfr": "Double ristretto, lait concentré soyeux, latte art galerie, créma dorée.",
+      "den": "Double ristretto, condensed milk silk, gallery latte art, sun-kissed crema.",
+      "dar": "ريستريتو مضاعف، حليب مكثف حريري، فن لاتيه راقٍ، كريما ذهبية.",
+      "ifr": "Ristretto • Lait concentré • Art",
+      "ien": "Ristretto • Condensed milk • Art",
+      "iar": "ريستريتو • حليب مكثف • فن",
+      "price": "12 DT",
+      "tagfr": "Signature",
+      "tagen": "Signature",
+      "tagar": "مميز",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Nuage Glacé Caramel",
+      "en": "Iced Caramel Cloud",
+      "ar": "سحابة الكراميل المثلجة",
+      "dfr": "Cold brew, nuage de caramel, voile de vanille — la star de la terrasse.",
+      "den": "Cold brew, caramel cloud foam, vanilla mist — the terrace favourite.",
+      "dar": "كولد برو، رغوة كراميل سحابية، لمسة فانيليا — نجمة التراس.",
+      "ifr": "Cold brew • Caramel • Vanille",
+      "ien": "Cold brew • Caramel • Vanilla",
+      "iar": "كولد برو • كراميل • فانيليا",
+      "price": "16 DT",
+      "tagfr": "Icône Glacée",
+      "tagen": "Iced Icon",
+      "tagar": "أيقونة مثلجة",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Mojito Vierge & Éclat Mangue",
+      "en": "Virgin Mojito & Mango Glow",
+      "ar": "موهيتو فيرجن وتوهج المانجو",
+      "dfr": "Menthe pressée, citron vert, nectar de mangue, pétillance glacée.",
+      "den": "Hand-pressed mint, lime, mango nectar, sparkling chill.",
+      "dar": "نعناع طازج، ليمون أخضر، رحيق مانجو، انتعاش فوار.",
+      "ifr": "Menthe • Citron • Mangue • Pétillant",
+      "ien": "Mint • Lime • Mango • Sparkle",
+      "iar": "نعناع • ليمون • مانجو • فوار",
+      "price": "15 DT",
+      "tagfr": "Frais",
+      "tagen": "Fresh",
+      "tagar": "طازج",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    }
+  ],
+  "dessert": [
+    {
+      "fr": "Parfait Mangue Passion",
+      "en": "Mango Passion Parfait",
+      "ar": "بارفيه المانجو والباشن",
+      "dfr": "Notre légende — mousse mangue, coulis passion, chantilly vanille, crumble amande.",
+      "den": "Our legend — mango mousse, passion coulis, vanilla chantilly, almond crumble.",
+      "dar": "أسطورتنا — موس مانجو، كولي الباشن، شانتيي فانيليا، كرامبل لوز.",
+      "ifr": "Mangue • Passion • Chantilly",
+      "ien": "Mango • Passion • Chantilly",
+      "iar": "مانجو • باشن • شانتيي",
+      "price": "22 DT",
+      "tagfr": "Légendaire",
+      "tagen": "Legendary",
+      "tagar": "أسطوري",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Cheesecake San Sebastián",
+      "en": "San Sebastián Cheesecake",
+      "ar": "تشيز كيك سان سيباستيان",
+      "dfr": "Basque caramélisé, cœur fondant, poussière de pistache — cuit chaque jour.",
+      "den": "Burnt-top Basque, molten heart, pistachio dust — baked fresh daily.",
+      "dar": "باسك مكرمل، قلب ذائب، غبار الفستق — يُخبز يومياً.",
+      "ifr": "Basque • Pistache • Vanille",
+      "ien": "Basque • Pistachio • Vanilla",
+      "iar": "باسك • فستق • فانيليا",
+      "price": "24 DT",
+      "tagfr": "Cuit du Jour",
+      "tagen": "Baked Daily",
+      "tagar": "يُخبز يومياً",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Fondant Chocolat Minuit",
+      "en": "Midnight Chocolate Fondant",
+      "ar": "فوندان الشوكولاتة",
+      "dfr": "Cœur 70% noir, fleur de sel, glace vanille, éclats de cacao.",
+      "den": "70% dark flow, fleur de sel, vanilla gelato, cocoa-nib snap.",
+      "dar": "قلب شوكولاتة 70%، ملح زهرة، آيس كريم فانيليا، كسرات كاكاو.",
+      "ifr": "70% noir • Fleur de sel • Glace",
+      "ien": "70% dark • Fleur de sel • Gelato",
+      "iar": "70% داكنة • ملح • جيلاتو",
+      "price": "20 DT",
+      "tagfr": "Décadent",
+      "tagen": "Decadent",
+      "tagar": "فاخر",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Panier Croissants Dorés",
+      "en": "Golden Croissant Basket",
+      "ar": "سلة الكرواسون الذهبية",
+      "dfr": "Croissants feuilletés au beurre, trio de confitures, miel & œufs brouillés.",
+      "den": "Flaky butter croissants, morning jam trio, honey & soft scrambled pairing.",
+      "dar": "كرواسون زبدة هش، ثلاثية مربى، عسل وبيض مخفوق.",
+      "ifr": "Beurre • Trio confitures • Miel",
+      "ien": "Butter • Jam trio • Honey",
+      "iar": "زبدة • مربى • عسل",
+      "price": "18 DT",
+      "tagfr": "Rituel Matin",
+      "tagen": "Morning Ritual",
+      "tagar": "طقس الصباح",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    }
+  ],
+  "galerie": [
+    {
+      "fr": "Burger Signature Brooks",
+      "en": "Brooks Signature Burger",
+      "ar": "برجر بروكس المميز",
+      "dfr": "Bœuf smashé, cheddar affiné, oignons caramélisés, sauce maison, brioché toastée + frites dorées.",
+      "den": "Smashed beef, aged cheddar, caramelised onions, house sauce, toasted brioche + golden fries.",
+      "dar": "لحم مدخن، شيدر معتق، بصل مكرمل، صلصة البيت، بريوش محمص + بطاطس ذهبية.",
+      "ifr": "Brioche • Cheddar • Roquette • Sauce maison",
+      "ien": "Brioche • Cheddar • Rocket • House sauce",
+      "iar": "بريوش • شيدر • جرجير • صلصة البيت",
+      "price": "32 DT",
+      "tagfr": "Le Plus Aimé",
+      "tagen": "Most Loved",
+      "tagar": "الأكثر حباً",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Suprême de Poulet Grillé",
+      "en": "Grilled Chicken Supreme",
+      "ar": "صدر الدجاج المشوي",
+      "dfr": "Poulet mariné aux herbes, huile d'olive du Cap Bon, légumes grillés, jus corsé.",
+      "den": "Herb-marinated chicken, Cap Bon olive oil, charred vegetables, jus corsé.",
+      "dar": "دجاج متبل بالأعشاب، زيت زيتون الوطن القبلي، خضار مشوية، صلصة مركزة.",
+      "ifr": "Fermier • Thym • Citron • Huile d'olive",
+      "ien": "Free-range • Thyme • Lemon • Olive oil",
+      "iar": "بلدي • زعتر • ليمون • زيت زيتون",
+      "price": "36 DT",
+      "tagfr": "Choix du Chef",
+      "tagen": "Chef's Pick",
+      "tagar": "اختيار الشيف",
+      "img": "/assets/menu/pasta-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "V60 Origine Unique",
+      "en": "Single-Origin V60 Pour-Over",
+      "ar": "تقطير V60 مصدر واحد",
+      "dfr": "Éthiopie Yirgacheffe, floraison lente, floral & abricot — versé à table.",
+      "den": "Ethiopia Yirgacheffe, slow bloom, floral & apricot — brewed tableside.",
+      "dar": "إثيوبيا يرغاشيف، تقطير بطيء، زهري ومشمش — يُحضَّر أمام الطاولة.",
+      "ifr": "Yirgacheffe • 92°C • 3:00 min",
+      "ien": "Yirgacheffe • 92°C • 3:00 min",
+      "iar": "يرغاشيف • 92° • 3:00 د",
+      "price": "14 DT",
+      "tagfr": "Slow Brew",
+      "tagen": "Slow Brew",
+      "tagar": "تقطير بطيء",
+      "img": "/assets/venue/brooks-salon-columns.jpg"
+    },
+    {
+      "fr": "Latte Espagnol Doré",
+      "en": "Spanish Golden Latte",
+      "ar": "لاتيه إسباني ذهبي",
+      "dfr": "Double ristretto, lait concentré soyeux, latte art galerie, créma dorée.",
+      "den": "Double ristretto, condensed milk silk, gallery latte art, sun-kissed crema.",
+      "dar": "ريستريتو مضاعف، حليب مكثف حريري، فن لاتيه راقٍ، كريما ذهبية.",
+      "ifr": "Ristretto • Lait concentré • Art",
+      "ien": "Ristretto • Condensed milk • Art",
+      "iar": "ريستريتو • حليب مكثف • فن",
+      "price": "12 DT",
+      "tagfr": "Signature",
+      "tagen": "Signature",
+      "tagar": "مميز",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Parfait Mangue Passion",
+      "en": "Mango Passion Parfait",
+      "ar": "بارفيه المانجو والباشن",
+      "dfr": "Notre légende — mousse mangue, coulis passion, chantilly vanille, crumble amande.",
+      "den": "Our legend — mango mousse, passion coulis, vanilla chantilly, almond crumble.",
+      "dar": "أسطورتنا — موس مانجو، كولي الباشن، شانتيي فانيليا، كرامبل لوز.",
+      "ifr": "Mangue • Passion • Chantilly",
+      "ien": "Mango • Passion • Chantilly",
+      "iar": "مانجو • باشن • شانتيي",
+      "price": "22 DT",
+      "tagfr": "Légendaire",
+      "tagen": "Legendary",
+      "tagar": "أسطوري",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Cheesecake San Sebastián",
+      "en": "San Sebastián Cheesecake",
+      "ar": "تشيز كيك سان سيباستيان",
+      "dfr": "Basque caramélisé, cœur fondant, poussière de pistache — cuit chaque jour.",
+      "den": "Burnt-top Basque, molten heart, pistachio dust — baked fresh daily.",
+      "dar": "باسك مكرمل، قلب ذائب، غبار الفستق — يُخبز يومياً.",
+      "ifr": "Basque • Pistache • Vanille",
+      "ien": "Basque • Pistachio • Vanilla",
+      "iar": "باسك • فستق • فانيليا",
+      "price": "24 DT",
+      "tagfr": "Cuit du Jour",
+      "tagen": "Baked Daily",
+      "tagar": "يُخبز يومياً",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    }
+  ]
+}
+</script>
+<!-- MENU_DATA_END -->
+
+<!-- ============ MENU (onglets, 3 langues) ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <p class="eyebrow" data-i18n="menu.eyebrow">À la carte • Nabeul</p>
+      <h2 class="serif" data-i18n="menu.title">Notre <em>carte</em></h2>
+      <p class="lead" data-i18n="menu.lead">Une carte courte, fraîche et ensoleillée — grillé, cuit et infusé à la commande. Prix en dinars tunisiens (DT).</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Menu">
+      <button type="button" role="tab" class="menu-tab on" data-cat="galerie" aria-selected="true" data-i18n="menu.tab.galerie">À la une</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="mains" aria-selected="false" data-i18n="menu.tab.mains">Plats</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="coffee" aria-selected="false" data-i18n="menu.tab.coffee">Cafés &amp; élixirs</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="dessert" aria-selected="false" data-i18n="menu.tab.dessert">Desserts</button>
+      <span class="menu-tab-ink" aria-hidden="true"></span>
+    </div>
+
+    <div class="menu-grid" id="menuGrid" role="tabpanel">
+      <!-- rempli par le JS à partir du JSON #menu-data -->
+    </div>
+    <noscript><p class="menu-noscript">Pizza 24 DT · Pasta fruits de mer · Burger 32 DT · Cheesecake Lotus 24 DT · Latte espagnol 12 DT — 93 301 771</p></noscript>
   </div>
 </section>
 
 <!-- ============ STATS ============ -->
 <section id="stats">
   <div class="wrap stats">
-    <div class="stat"><b data-count="48">0</b><span>Plats signatures</span></div>
-    <div class="stat"><b data-count="36">0</b><span>Cafés &amp; élixirs</span></div>
-    <div class="stat"><b data-count="46" data-decimal="1">0</b><span>Note Google</span></div>
-    <div class="stat"><b data-count="22" data-suffix="K">0</b><span>Convives / mois</span></div>
+    <div class="stat"><b data-count="48">0</b><span data-i18n="stats.s1">Plats signatures</span></div>
+    <div class="stat"><b data-count="36">0</b><span data-i18n="stats.s2">Cafés &amp; élixirs</span></div>
+    <div class="stat"><b data-count="46" data-decimal="1">0</b><span data-i18n="stats.s3">Note Google</span></div>
+    <div class="stat"><b data-count="22" data-suffix="K">0</b><span data-i18n="stats.s4">Convives / mois</span></div>
   </div>
 </section>
 
@@ -450,8 +872,8 @@
 <section id="quote">
   <div class="bg" id="quoteBg" style="background-image:url('../assets/venue/brooks-salon-lumiere.jpg')"></div>
   <div class="wrap">
-    <blockquote>« Le meilleur <em>latte espagnol</em> du Cap Bon — et la terrasse la plus douce au coucher du soleil. »</blockquote>
-    <cite>— Review Google, Nabeul 2025</cite>
+    <blockquote data-i18n="quote.text">« Le meilleur <em>latte espagnol</em> du Cap Bon — et la terrasse la plus douce au coucher du soleil. »</blockquote>
+    <cite data-i18n="quote.cite">— Review Google, Nabeul 2025</cite>
   </div>
 </section>
 
@@ -459,37 +881,37 @@
 <section id="reserve">
   <div class="wrap grid2">
     <div>
-      <p class="eyebrow">Réservation</p>
-      <h2>Votre table<br />au soleil vous attend</h2>
-      <p>Choisissez votre univers — Grand Salon, Terrasse Olive ou Lounge VIP. Notre concierge confirme en quelques minutes sur WhatsApp.</p>
+      <p class="eyebrow" data-i18n="res.eyebrow">Réservation</p>
+      <h2 data-i18n="res.title">Votre table<br />au soleil vous attend</h2>
+      <p data-i18n="res.text">Choisissez votre univers — Grand Salon, Terrasse Olive ou Lounge VIP. Notre concierge confirme en quelques minutes sur WhatsApp.</p>
       <div class="pillars" style="margin-top:24px">
-        <div class="pillar reveal"><i></i><div><b>Confirmation WhatsApp</b><small>Aucun compte, aucun formulaire perdu — un message, une réponse.</small></div></div>
-        <div class="pillar reveal"><i></i><div><b>Dimanche karaoké</b><small>Réservation conseillée après 19h — les tables partent vite.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="res.b1">Confirmation WhatsApp</b><small data-i18n="res.b1d">Aucun compte, aucun formulaire perdu — un message, une réponse.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="res.b2">Dimanche karaoké</b><small data-i18n="res.b2d">Réservation conseillée après 19h — les tables partent vite.</small></div></div>
       </div>
     </div>
     <form class="panel reveal" id="form">
       <div class="field">
-        <label for="area">Espace</label>
+        <label for="area" data-i18n="res.area">Espace</label>
         <select id="area" name="area">
-          <option>Terrasse Olive Courtyard</option>
-          <option>Grand Salon</option>
-          <option>Lounge VIP &amp; Famille</option>
+          <option data-i18n="res.area1">Terrasse Olive Courtyard</option>
+          <option data-i18n="res.area2">Grand Salon</option>
+          <option data-i18n="res.area3">Lounge VIP &amp; Famille</option>
         </select>
       </div>
       <div class="two">
-        <div class="field"><label for="date">Date</label><input type="date" id="date" name="date" required /></div>
-        <div class="field"><label for="time">Heure</label>
+        <div class="field"><label for="date" data-i18n="res.date">Date</label><input type="date" id="date" name="date" required /></div>
+        <div class="field"><label for="time" data-i18n="res.time">Heure</label>
           <select id="time" name="time"><option>12:30</option><option>14:00</option><option>17:00</option><option selected>19:30</option><option>21:00</option></select>
         </div>
       </div>
       <div class="two">
-        <div class="field"><label for="guests">Convives</label><input type="number" id="guests" name="guests" min="1" max="20" value="2" /></div>
-        <div class="field"><label for="name">Nom</label><input id="name" name="name" placeholder="Amine Trabelsi" required /></div>
+        <div class="field"><label for="guests" data-i18n="res.guests">Convives</label><input type="number" id="guests" name="guests" min="1" max="20" value="2" /></div>
+        <div class="field"><label for="name" data-i18n="res.name">Nom</label><input id="name" name="name" placeholder="Amine Trabelsi" required /></div>
       </div>
-      <div class="field"><label for="phone">Téléphone / WhatsApp</label><input id="phone" name="phone" placeholder="+216 …" required /></div>
-      <button type="submit" class="cta" style="width:100%;justify-content:center;margin-top:6px">Confirmer sur WhatsApp →</button>
-      <p class="note">Ce formulaire ne stocke rien : il ouvre simplement WhatsApp avec votre demande pré-remplie. (Sur la version Next.js, on peut ajouter un e-mail + Google Sheets via une route API.)</p>
-      <div class="ok" id="ok">Merci ! WhatsApp s'ouvre avec votre demande — le concierge répond en quelques minutes.</div>
+      <div class="field"><label for="phone" data-i18n="res.phone">Téléphone / WhatsApp</label><input id="phone" name="phone" placeholder="+216 …" required /></div>
+      <button type="submit" class="cta" style="width:100%;justify-content:center;margin-top:6px"><span data-i18n="res.submit">Confirmer sur WhatsApp</span></button>
+      <p class="note" data-i18n="res.note">Ce formulaire ne stocke rien : il ouvre simplement WhatsApp avec votre demande pré-remplie.</p>
+      <div class="ok" id="ok" data-i18n="res.ok">Merci ! WhatsApp s'ouvre avec votre demande — le concierge répond en quelques minutes.</div>
     </form>
   </div>
 </section>
@@ -500,17 +922,18 @@
       <div>
         <img src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café Nabeul" width="92" height="92" style="margin-bottom:14px" />
         <p class="big serif">Brooks Café<br />Nabeul</p>
-        <p style="margin-top:12px;max-width:32ch">Food • Chill • Good vibes — ton spot préféré sur la côte du Cap Bon.</p>
+        <p style="margin-top:12px;max-width:32ch" data-i18n="foot.tag">Food • Chill • Good vibes — ton spot préféré sur la côte du Cap Bon.</p>
       </div>
-      <div><h4>Adresse</h4><p>AFH2, Av. Habib Bourguiba<br />Nabeul 8000, Tunisie</p><a href="#">Itinéraire →</a></div>
-      <div><h4>Contact</h4><a href="tel:+21693301771">+216 93 301 771</a><a href="#">@broookscafe</a></div>
-      <div><h4>Horaires</h4><p>Tous les jours<br />7h30 — 00h00</p><p>Karaoké dimanche</p></div>
+      <div><h4 data-i18n="foot.addr">Adresse</h4><p data-i18n="foot.address">AFH2, Av. Habib Bourguiba<br />Nabeul 8000, Tunisie</p><a href="https://maps.google.com/?q=BROOKS+CAFE+Nabeul" target="_blank" rel="noreferrer" data-i18n="foot.route">Itinéraire</a></div>
+      <div><h4 data-i18n="foot.contact">Contact</h4><a href="tel:+21693301771">+216 93 301 771</a><a href="#">@broookscafe</a></div>
+      <div><h4 data-i18n="foot.hours">Horaires</h4><p data-i18n="foot.daily">Tous les jours<br />7h30 — 00h00</p><p data-i18n="foot.karaoke">Karaoké dimanche</p></div>
     </div>
-    <div class="legal"><span>© 2026 Brooks Café Nabeul</span><span>Site Next.js + GSAP — hébergé sur Vercel</span></div>
+    <div class="legal"><span data-i18n="foot.rights">© 2026 Brooks Café Nabeul</span><span data-i18n="foot.stack">Site GSAP + Lenis — hébergé sur Vercel</span></div>
   </div>
 </footer>
 
 <!-- ============ MOTEUR D'ANIMATION ============ -->
+<script src="./i18n.js"></script>
 <script src="./vendor/lenis.min.js"></script>
 <script src="./vendor/gsap.min.js"></script>
 <script src="./vendor/ScrollTrigger.min.js"></script>
@@ -548,6 +971,125 @@
       requestAnimationFrame(raf);
     }
   }
+
+  /* =========================================================
+     1.b LANGUE (FR / EN / AR) + dir RTL + persistance
+     ========================================================= */
+  const I18N = window.BROOKS_I18N || {};
+  const SUPPORTED = Object.keys(I18N);
+  const storeKey = "brooks-lang";
+
+  const readLang = () => {
+    const fromUrl = new URLSearchParams(location.search).get("lang");
+    if (fromUrl && SUPPORTED.includes(fromUrl)) return fromUrl;
+    try {
+      const saved = localStorage.getItem(storeKey);
+      if (saved && SUPPORTED.includes(saved)) return saved;
+    } catch (e) { /* mode privé : on ignore */ }
+    // marché local : on ne bascule automatiquement qu'en français ou en arabe.
+    // l'anglais reste un choix explicite (bouton EN).
+    const nav = (navigator.language || "fr").slice(0, 2).toLowerCase();
+    return nav === "ar" ? "ar" : "fr";
+  };
+
+  let MENU_DATA = null;
+  try {
+    const node = document.getElementById("menu-data");
+    if (node) MENU_DATA = JSON.parse(node.textContent);
+  } catch (e) { console.warn("Carte indisponible :", e); }
+
+  let currentCat = "galerie";
+
+  const renderMenu = (lang) => {
+    const grid = document.getElementById("menuGrid");
+    if (!grid) return;
+    if (!MENU_DATA) { grid.innerHTML = '<p class="menu-noscript">Carte indisponible — 93 301 771</p>'; return; }
+    const list = MENU_DATA[currentCat] || [];
+    const L = lang === "ar" ? "ar" : lang;
+    grid.classList.toggle("is-gallery", currentCat === "galerie");
+    grid.innerHTML = list.map((d) => `
+      <article class="dish">
+        <img src="${d.img}" alt="${(d["fr"] || "").replace(/"/g, "&quot;")}" loading="lazy" width="96" height="96" />
+        <div>
+          <h3>${d[L] || d.fr}</h3>
+          <p>${d["d" + L] || d.dfr}</p>
+          <div class="ing">${d["i" + L] || d.ifr}</div>
+          <span class="tag">${d["tag" + L] || d.tagfr}</span>
+        </div>
+        <div class="p">${d.price}</div>
+      </article>`).join("");
+  };
+
+  const paintTabs = () => {
+    document.querySelectorAll(".menu-tab").forEach((b) => {
+      b.classList.toggle("on", b.dataset.cat === currentCat);
+      b.setAttribute("aria-selected", String(b.dataset.cat === currentCat));
+    });
+    const ink = document.querySelector(".menu-tab-ink");
+    const active = document.querySelector(".menu-tab.on");
+    if (ink && active) {
+      ink.style.width = active.offsetWidth + "px";
+      ink.style.left = active.offsetLeft + "px";
+    }
+  };
+
+  const applyLang = (lang, { persist = true } = {}) => {
+    const dict = I18N[lang];
+    if (!dict) return;
+
+    document.documentElement.lang = lang;
+    document.documentElement.dir = dict.dir || "ltr";
+    document.title = lang === "ar"
+      ? "بروكس كافيه نابل — بيتزا • باستا • مأكولات • فواكه"
+      : lang === "en"
+        ? "BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits"
+        : "BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits";
+
+    document.querySelectorAll("[data-i18n]").forEach((el) => {
+      const key = el.dataset.i18n;
+      const val = lang === "ar" ? dict[key] : (dict[key] ?? I18N.fr[key]);
+      if (val == null) return;
+      const mobileKey = el.dataset.i18nMobile;
+      const text = mobileKey && window.matchMedia("(max-width: 860px)").matches ? dict[mobileKey] : val;
+      if (text.includes("<")) el.innerHTML = text;
+      else el.textContent = text;
+    });
+
+    document.querySelectorAll("[data-lang]").forEach((b) => {
+      b.classList.toggle("on", b.dataset.lang === lang);
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang));
+    });
+
+    renderMenu(lang);
+    paintTabs();
+
+    requestAnimationFrame(paintTabs);
+
+    if (persist) {
+      try { localStorage.setItem(storeKey, lang); } catch (e) { /* ignore */ }
+      const url = new URL(location.href);
+      url.searchParams.set("lang", lang);
+      history.replaceState(null, "", url);
+    }
+    if (hasGsap) ScrollTrigger.refresh();
+  };
+
+  document.querySelectorAll("[data-lang]").forEach((b) => {
+    b.addEventListener("click", () => applyLang(b.dataset.lang));
+  });
+
+  document.querySelectorAll(".menu-tab").forEach((b) => {
+    b.addEventListener("click", () => {
+      currentCat = b.dataset.cat;
+      paintTabs();
+      renderMenu(document.documentElement.lang || "fr");
+      if (hasGsap) ScrollTrigger.refresh();
+    });
+  });
+
+  const initialLang = readLang();
+  applyLang(initialLang, { persist: false });
+  window.addEventListener("resize", paintTabs);
 
   /* Ancres : on délègue le scroll à Lenis pour garder l'inertie */
   $$('a[href^="#"]').forEach((a) => {

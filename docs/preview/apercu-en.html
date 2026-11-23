@@ -1,0 +1,976 @@
+<!doctype html>
+<html lang="en" dir="ltr" class=""><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits</title>
+<meta name="description" content="BROOKS Café Nabeul — Pizza • Pasta • Food • Fruits. Ton spot préféré à Nabeul, AFH2. Ouvert tous les jours 7h30 — 00h00. Réservation 93 301 771.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="icon" type="image/png" sizes="192x192" href="../assets/brand/brooks-badge-192.png">
+<link rel="apple-touch-icon" href="../assets/brand/brooks-badge-192.png">
+<meta property="og:image" content="../assets/brand/og-brooks.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0E3B2B">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=Cairo:wght@400;600;700;800&amp;family=Amiri:wght@400;700&amp;display=swap" rel="stylesheet">
+<script>/* si le JS est coupé, aucun contenu ne reste caché */document.documentElement.classList.add("anim");</script>
+<style>
+  :root{
+    --ivory:#FAF6F0; --travertine:#F3ECE1; --espresso:#1F1A17; --taupe:#6B5E55;
+    --olive:#2D4A3E; --gold:#C59B27; --gold-light:#F5C26B; --terracotta:#C86D51; --cream:#FFFDF8;
+    --serif:"Cormorant Garamond", Georgia, serif;
+    --sans:"Plus Jakarta Sans", system-ui, sans-serif;
+  --serif-active:var(--serif);
+  --sans-active:var(--sans);
+  }
+  /* ARABE : polices dédiées + interligne plus généreux */
+  html[lang="ar"]{
+    --serif-active:"Amiri", "Cairo", Georgia, serif;
+    --sans-active:"Cairo", system-ui, sans-serif;
+  }
+  html[lang="ar"] body{font-family:var(--sans-active)}
+  html[lang="ar"] .serif,
+  html[lang="ar"] h1,html[lang="ar"] h2,html[lang="ar"] h3,
+  html[lang="ar"] blockquote{font-family:var(--serif-active);letter-spacing:0}
+  html[lang="ar"] .eyebrow,html[lang="ar"] .num,html[lang="ar"] .price,
+  html[lang="ar"] .cta,html[lang="ar"] nav.links a{letter-spacing:0;text-transform:none;font-weight:700}
+  html[lang="ar"] p{line-height:1.95}
+  html[lang="ar"] .hero-title{line-height:1.25}
+  html[lang="ar"] .hero-title em{font-style:normal;color:var(--gold-light)}
+  /* miroir : le sens de lecture est géré par dir, on ajuste juste les éléments visuels */
+  html[dir="rtl"] .scroll-hint,
+  html[dir="rtl"] .hero-inner,
+  html[dir="rtl"] .pasta-copy{text-align:right}
+  html[dir="rtl"] .pasta-notes li{flex-direction:row-reverse;justify-content:flex-end}
+  html[dir="rtl"] .pillar{flex-direction:row-reverse;text-align:right}
+  html[dir="rtl"] .foot-grid{text-align:right}
+  html[dir="rtl"] .legal{direction:rtl}
+  html[lang="ar"] .card-body h3{font-family:var(--serif-active);font-size:1.7rem}
+  *{box-sizing:border-box}
+  html{background:#1F1A17}
+  body{
+    margin:0; background:var(--ivory); color:var(--espresso);
+    font-family:var(--sans); -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* Lenis : on ne met surtout PAS scroll-behavior:smooth sur html (conflit) */
+  html.lenis, html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto !important}
+  .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+  .lenis.lenis-stopped{overflow:hidden}
+
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .serif{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
+  .eyebrow{
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;font-weight:800;
+    color:var(--gold);
+  }
+
+  /* ---------- PROGRESS RAIL ---------- */
+  #rail{position:fixed;left:0;top:0;height:3px;width:0%;background:linear-gradient(90deg,var(--gold),var(--terracotta));z-index:120}
+
+  /* ---------- NAV ---------- */
+  header#nav{
+    position:fixed;inset:0 0 auto 0;z-index:100;display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;transition:background .4s ease,padding .4s ease,border-color .4s ease;
+    border-bottom:1px solid transparent;
+  }
+  header#nav.solid{
+    background:rgba(250,246,240,.86);backdrop-filter:blur(14px);
+    border-bottom-color:rgba(180,140,85,.25);padding:10px 24px;
+  }
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .dot{width:34px;height:34px;border-radius:50%;background:var(--olive);display:grid;place-items:center;color:var(--gold-light);font-family:var(--serif);font-size:20px}
+  .brand b{font-size:13px;letter-spacing:.22em;text-transform:uppercase}
+  .brand small{display:block;font-size:9px;letter-spacing:.2em;color:var(--taupe);text-transform:uppercase}
+  nav.links{display:flex;gap:26px;font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+  nav.links a{position:relative;padding:6px 0;color:var(--espresso)}
+  nav.links a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--gold);transition:width .35s ease}
+  nav.links a:hover::after{width:100%}
+  .cta{
+    display:inline-flex;align-items:center;gap:8px;border-radius:999px;background:var(--olive);color:#fff;
+    padding:12px 22px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+    box-shadow:0 10px 30px rgba(45,74,62,.28);transition:transform .3s ease,background .3s ease;border:0;cursor:pointer;
+  }
+  .cta:hover{transform:translateY(-2px);background:#1E332B}
+  .cta.gold{background:var(--gold-light);color:var(--espresso);box-shadow:0 10px 30px rgba(197,155,39,.35)}
+  .cta.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45);box-shadow:none}
+  .cta.ghost:hover{background:rgba(255,255,255,.12)}
+  @media(max-width:900px){nav.links{display:none}}
+
+  /* ---------- HERO ---------- */
+  #hero{position:relative;height:100svh;min-height:620px;overflow:hidden;background:#141110}
+  .hero-media{position:absolute;inset:-8% -4%;will-change:transform}
+  .hero-media img{
+    width:100%;height:100%;object-fit:cover;opacity:.72;
+    animation:kb 24s ease-in-out infinite alternate;
+  }
+  @keyframes kb{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.12) translate3d(-1.5%,-1.2%,0)}}
+  #hero::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(120% 80% at 20% 10%,rgba(20,17,16,.15),rgba(20,17,16,.75) 70%),
+      linear-gradient(to top,rgba(20,17,16,.92),rgba(20,17,16,.10) 55%);
+  }
+  .hero-inner{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:11vh}
+  .hero-inner .eyebrow{color:var(--gold-light)}
+  h1.hero-title{
+    font-family:var(--serif);color:#fff;margin:14px 0 0;
+    font-size:clamp(2.6rem,7.6vw,6.2rem);line-height:.98;font-weight:500;letter-spacing:-.02em;
+  }
+  .hero-title .line{display:block;overflow:hidden}
+  .hero-title .line > span{display:block;will-change:transform}
+  .hero-title em{font-style:italic;color:var(--gold-light)}
+  .hero-sub{max-width:52ch;margin:22px 0 0;color:rgba(255,255,255,.78);font-size:15px;line-height:1.75;font-weight:300}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .hero-meta{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;color:rgba(255,255,255,.72);font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
+  .hero-meta span{display:flex;align-items:center;gap:8px}
+  .hero-meta i{width:5px;height:5px;border-radius:50%;background:var(--gold-light);display:inline-block}
+  .scroll-hint{
+    position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;
+    color:rgba(255,255,255,.55);font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+    display:flex;flex-direction:column;align-items:center;gap:10px;
+  }
+  .scroll-hint .bar{width:1px;height:46px;background:linear-gradient(to bottom,transparent,var(--gold-light));animation:pulse 2.2s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.25;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+  @keyframes splashOut{to{opacity:0;visibility:hidden}}
+
+  /* ---------- HORIZONTAL PIN ---------- */
+  #tour{
+    position:relative;background:var(--travertine);overflow:hidden;
+    height:100svh;min-height:600px;display:flex;flex-direction:column;justify-content:center;
+  }
+  #tour .pin-head{padding:24px 0 4px}
+  #tour h2{margin:8px 0 0;font-size:clamp(1.7rem,3.6vw,2.9rem)}
+  #tour p.lead{max-width:64ch;color:var(--taupe);line-height:1.75;margin:12px 0 0;font-size:14px}
+  .track-outer{position:relative;flex:1 1 auto;min-height:0;display:flex;align-items:center;overflow:hidden}
+  .track{display:flex;gap:22px;padding:0 max(24px,calc((100vw - 1180px)/2));will-change:transform}
+  .card{
+    position:relative;flex:0 0 min(68vw,500px);height:min(52svh,440px);border-radius:26px;overflow:hidden;
+    box-shadow:0 40px 80px -40px rgba(31,26,23,.55);background:#1f1a17;isolation:isolate;
+  }
+  .card img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+  .card:hover img{transform:scale(1.14)}
+  .card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(15,13,12,.9),rgba(15,13,12,.05) 55%)}
+  .card-body{position:absolute;z-index:2;inset:auto 0 0 0;padding:26px}
+  .card-body .num{font-size:10px;letter-spacing:.3em;color:var(--gold-light);font-weight:800}
+  .card-body h3{font-family:var(--serif);color:#fff;font-size:2rem;margin:8px 0 6px;font-weight:500}
+  .card-body p{color:rgba(255,255,255,.72);font-size:13px;line-height:1.65;margin:0;max-width:34ch;font-weight:300}
+  .card-body .price{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-light)}
+  .pin-hint{padding:10px 0 26px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);font-weight:800}
+
+  /* ---------- STORY / LINE REVEAL ---------- */
+  #story{
+    position:relative;background:linear-gradient(to bottom,var(--ivory),#fff);padding:120px 0;
+  }
+  .story-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+  @media(max-width:900px){.story-grid{grid-template-columns:1fr;gap:36px}}
+  .reveal-lines{font-family:var(--serif);font-size:clamp(1.8rem,3.6vw,3.1rem);line-height:1.22;margin:18px 0 0;font-weight:500}
+  .reveal-lines .ln{display:block;overflow:hidden}
+  .reveal-lines .ln > span{display:block;will-change:transform,opacity}
+  .reveal-lines em{color:var(--terracotta);font-style:italic}
+  .story-copy p{color:var(--taupe);line-height:1.85;font-size:15px}
+  .pillars{display:grid;gap:14px;margin-top:28px}
+  .pillar{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid rgba(180,140,85,.25);border-radius:18px;padding:16px 18px}
+  .pillar i{width:9px;height:9px;border-radius:50%;background:var(--gold);margin-top:7px;flex:0 0 auto}
+  .pillar b{font-size:14px}
+  .pillar small{display:block;color:var(--taupe);font-size:12px;margin-top:3px;line-height:1.6}
+
+  /* ---------- SCALE SCROLL (cheesecake) ---------- */
+  #signature{position:relative;background:#141110;color:#fff;overflow:hidden}
+  .stack-viewport{height:100svh;display:grid;place-items:center;position:relative}
+  .plate{
+    position:absolute;width:min(78vw,760px);aspect-ratio:1;border-radius:50%;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.8);will-change:transform;
+  }
+  .plate img{width:100%;height:100%;object-fit:cover}
+  .plate-copy{position:relative;z-index:3;text-align:center;padding:0 24px;mix-blend-mode:normal}
+  .plate-copy .eyebrow{color:var(--gold-light)}
+  .plate-copy h2{font-family:var(--serif);font-size:clamp(2.2rem,6vw,4.6rem);margin:14px 0 0;font-weight:500;line-height:1.02}
+  .plate-copy p{max-width:44ch;margin:18px auto 0;color:rgba(255,255,255,.7);font-size:14px;line-height:1.8;font-weight:300}
+  .plate-copy .price-tag{
+    display:inline-flex;margin-top:24px;border:1px solid rgba(245,194,107,.6);color:var(--gold-light);
+    border-radius:999px;padding:12px 24px;font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;
+    backdrop-filter:blur(6px);background:rgba(20,17,16,.28);
+  }
+
+  /* ---------- STATS ---------- */
+  #stats{background:var(--olive);color:#fff;padding:88px 0}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+  @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat b{display:block;font-family:var(--serif);font-size:clamp(2.2rem,4.6vw,3.4rem);font-weight:500;color:var(--gold-light)}
+  .stat span{display:block;margin-top:8px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.62);font-weight:800}
+
+  /* ---------- PARALLAX QUOTE ---------- */
+  #quote{position:relative;overflow:hidden;background:#191512;color:#fff;padding:130px 0}
+  #quote .bg{position:absolute;inset:-15% 0;background-size:cover;background-position:center;opacity:.28;will-change:transform}
+  #quote .wrap{position:relative;z-index:2;text-align:center}
+  #quote blockquote{font-family:var(--serif);font-size:clamp(1.6rem,3.8vw,3rem);line-height:1.32;margin:0 auto;max-width:22ch;font-weight:500}
+  #quote blockquote em{color:var(--gold-light);font-style:italic}
+  #quote cite{display:block;margin-top:26px;font-style:normal;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.6);font-weight:800}
+
+  /* ---------- RESERVE ---------- */
+  #reserve{padding:120px 0;background:linear-gradient(to bottom,#fff,var(--travertine))}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+  @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+  #reserve h2{font-family:var(--serif);font-size:clamp(2rem,4.2vw,3.2rem);margin:14px 0 0;font-weight:500;line-height:1.06}
+  #reserve p{color:var(--taupe);line-height:1.8}
+  .panel{background:#fff;border:1px solid rgba(180,140,85,.28);border-radius:26px;padding:26px;box-shadow:0 40px 80px -50px rgba(31,26,23,.45)}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:800;color:var(--taupe);margin-bottom:6px}
+  .field input,.field select{
+    width:100%;padding:13px 16px;border-radius:14px;border:1px solid rgba(180,140,85,.35);
+    background:#fff;font-family:var(--sans);font-size:14px;font-weight:600;outline:none;transition:border .2s,box-shadow .2s;
+  }
+  .field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(197,155,39,.14)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .note{font-size:11px;color:var(--taupe);line-height:1.7;margin-top:12px}
+  .ok{display:none;margin-top:14px;border-radius:14px;background:rgba(45,74,62,.08);border:1px solid rgba(45,74,62,.25);padding:14px 16px;font-size:13px;font-weight:700;color:var(--olive)}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--espresso);color:rgba(255,255,255,.72);padding:64px 0 34px;overflow:hidden}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px}
+  @media(max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}}
+  footer h4{color:#fff;font-size:10px;letter-spacing:.26em;text-transform:uppercase;margin:0 0 14px}
+  footer a,footer p{display:block;font-size:13px;margin:8px 0;line-height:1.7}
+  footer .big{font-family:var(--serif);color:#fff;font-size:2rem;line-height:1.05;margin:0}
+  .legal{margin-top:46px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.42);font-weight:700}
+
+  /* ---------- REVEAL (activé seulement si le JS tourne : html.anim) ---------- */
+  html.anim .reveal{opacity:0;transform:translateY(28px)}
+  html.anim .reveal-lines .ln > span{transform:translateY(110%);opacity:0}
+
+
+  /* ---------- PASTA ---------- */
+  #pasta{background:linear-gradient(to bottom,var(--travertine),#fff);padding:110px 0}
+  .pasta-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  @media(max-width:900px){.pasta-grid{grid-template-columns:1fr;gap:34px}}
+  .pasta-media{border-radius:26px;overflow:hidden;box-shadow:0 50px 90px -50px rgba(31,26,23,.6);aspect-ratio:4/3}
+  .pasta-media img{width:100%;height:100%;object-fit:cover;will-change:transform}
+  #pasta h2{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);margin:12px 0 0;font-weight:500;line-height:1.04}
+  #pasta h2 em{color:var(--terracotta);font-style:italic}
+  .pasta-copy p{color:var(--taupe);line-height:1.85;font-size:15px;margin-top:16px;max-width:46ch}
+  .pasta-notes{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:10px}
+  .pasta-notes li{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:var(--espresso)}
+  .pasta-notes li span{width:7px;height:7px;border-radius:50%;background:var(--gold);flex:0 0 auto}
+
+  /* ---------- ÉCRAN DE MARQUE (logo) ---------- */
+  #splash{
+    position:fixed;inset:0;z-index:200;background:#0E3B2B;display:grid;place-items:center;
+    transition:opacity .7s ease,visibility .7s ease;
+  }
+  #splash.gone{opacity:0;visibility:hidden;pointer-events:none}
+  #splash img{width:min(46vw,190px);height:auto;filter:drop-shadow(0 24px 50px rgba(0,0,0,.45))}
+  #splash span{
+    display:block;text-align:center;margin-top:18px;font-size:9px;letter-spacing:.42em;color:rgba(246,239,223,.6);
+    text-transform:uppercase;font-weight:800
+  }
+  .brand-badge{width:38px;height:38px;border-radius:50%;box-shadow:0 4px 14px rgba(0,0,0,.22);flex:0 0 auto}
+
+
+  /* ---------- MOBILE : le pin devient un carrousel snap natif ---------- */
+  @media (max-width: 860px){
+    #tour{height:auto;min-height:0;padding:26px 0 10px;justify-content:flex-start}
+    #tour .pin-head{padding:16px 0 2px}
+    #tour p.lead{font-size:13.5px;line-height:1.7}
+    .track-outer{height:auto;flex:0 0 auto;overflow:visible}
+    .track{
+      overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+      padding:6px 18px 22px;gap:14px;transform:none !important;scrollbar-width:none;
+    }
+    .track::-webkit-scrollbar{display:none}
+    .card{flex:0 0 84vw;height:min(58svh,420px);scroll-snap-align:center;border-radius:22px}
+    .card img{transform:none}
+    .card-body{padding:18px}
+    .card-body h3{font-size:1.5rem}
+    .card-body p{font-size:12px}
+    .pin-hint{padding:0 0 20px;font-size:9px;letter-spacing:.18em}
+    .pin-hint::before{content:"↔ "; }
+
+    .stack-viewport{height:auto;min-height:0;padding:66px 0 56px;display:block}
+    .plate{position:relative;width:min(78vw,330px);margin:0 auto 26px;border-radius:50%}
+    .plate-copy h2{font-size:clamp(2rem,9vw,2.6rem)}
+    .plate-copy p{font-size:13px}
+
+    #pasta{padding:74px 0}
+    #story,#reserve,#quote{padding:74px 0}
+    .hero-inner{padding-bottom:15vh}
+    .hero-meta{gap:14px;font-size:10px}
+    .hero-meta span:nth-child(3){display:none}
+    .scroll-hint{bottom:12px}
+    #nav{padding:12px 16px}
+    .cta{padding:11px 18px;font-size:10px}
+    .stats{gap:16px}
+    #splash img{width:min(52vw,160px)}
+  }
+  @media (max-width: 480px){
+    .card{flex:0 0 88vw;height:min(54svh,380px)}
+    .hero-title{font-size:clamp(2.1rem,10.5vw,3rem)}
+    .pasta-grid,#story .story-grid{gap:22px}
+  }
+
+  /* quand le JS est coupé : rien ne reste caché + le splash s'efface seul */
+  html:not(.anim) #splash{display:none}
+  html:not(.anim) .reveal,html:not(.anim) .reveal-lines .ln > span{opacity:1 !important;transform:none !important}
+
+
+  /* ---------- SÉLECTEUR DE LANGUE ---------- */
+  .nav-right{display:flex;align-items:center;gap:12px}
+  .lang{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px;backdrop-filter:blur(8px)}
+  header#nav.solid .lang{background:rgba(45,74,62,.07);border-color:rgba(45,74,62,.18)}
+  .lang button{
+    background:none;border:0;cursor:pointer;border-radius:999px;padding:6px 10px;
+    font:800 10px/1 var(--sans);letter-spacing:.1em;color:rgba(255,255,255,.75);transition:all .25s ease;
+  }
+  header#nav.solid .lang button{color:var(--taupe)}
+  .lang button.on{background:var(--gold-light);color:var(--espresso);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+  html[lang="ar"] .lang button{font-family:var(--sans-active);letter-spacing:0}
+
+  /* ---------- MENU ---------- */
+  #menu{padding:110px 0 120px;background:linear-gradient(to bottom,#fff,var(--ivory))}
+  .menu-head{max-width:64ch}
+  .menu-head h2{font-family:var(--serif);font-size:clamp(2rem,4.6vw,3.4rem);margin:12px 0 0;font-weight:500;line-height:1.05}
+  .menu-head h2 em{color:var(--terracotta);font-style:italic}
+  .menu-head .lead{color:var(--taupe);line-height:1.8;margin-top:14px;font-size:15px;max-width:58ch}
+  .menu-tabs{position:relative;display:inline-flex;gap:4px;margin-top:30px;padding:5px;border-radius:999px;background:var(--travertine);border:1px solid rgba(180,140,85,.28)}
+  .menu-tab{position:relative;z-index:2;background:none;border:0;cursor:pointer;border-radius:999px;padding:11px 20px;font:800 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--taupe);transition:color .3s ease}
+  .menu-tab.on{color:#fff}
+  .menu-tab-ink{position:absolute;z-index:1;top:5px;bottom:5px;border-radius:999px;background:var(--olive);transition:left .38s cubic-bezier(.22,1,.36,1),width .38s cubic-bezier(.22,1,.36,1)}
+  html[lang="ar"] .menu-tab{font-family:var(--sans-active);letter-spacing:0;text-transform:none;font-size:13px}
+  .menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:34px;transition:opacity .3s ease}
+  .menu-grid.is-gallery{grid-template-columns:repeat(3,1fr)}
+  .menu-grid.is-gallery .dish{grid-template-columns:1fr;gap:12px;padding:12px;align-items:start}
+  .menu-grid.is-gallery .dish img{width:100%;height:150px;border-radius:14px}
+  .menu-grid.is-gallery .dish .p{grid-column:auto;justify-self:start}
+  @media(max-width:1100px){.menu-grid.is-gallery{grid-template-columns:1fr 1fr}}
+  @media(max-width:700px){.menu-grid.is-gallery{grid-template-columns:1fr}}
+  /* arrivée en cascade des cartes */
+  .dish{opacity:0;transform:translateY(16px);animation:dishIn .55s cubic-bezier(.22,1,.36,1) forwards}
+  .dish:nth-child(1){animation-delay:.02s}.dish:nth-child(2){animation-delay:.06s}
+  .dish:nth-child(3){animation-delay:.10s}.dish:nth-child(4){animation-delay:.14s}
+  .dish:nth-child(5){animation-delay:.18s}.dish:nth-child(6){animation-delay:.22s}
+  @keyframes dishIn{to{opacity:1;transform:none}}
+  @media(max-width:860px){.menu-grid{grid-template-columns:1fr}}
+  .dish{
+    display:grid;grid-template-columns:96px 1fr auto;gap:16px;align-items:center;
+    background:#fff;border:1px solid rgba(180,140,85,.22);border-radius:20px;padding:14px;
+    transition:transform .35s ease,box-shadow .35s ease,border-color .35s ease;
+  }
+  .dish:hover{transform:translateY(-3px);box-shadow:0 24px 50px -30px rgba(31,26,23,.5);border-color:rgba(197,155,39,.5)}
+  .dish img{width:96px;height:96px;border-radius:14px;object-fit:cover;background:var(--travertine)}
+  .dish h3{font-family:var(--serif);font-size:1.22rem;margin:0;font-weight:600;line-height:1.2}
+  .dish p{margin:5px 0 0;font-size:12.5px;line-height:1.55;color:var(--taupe);font-weight:400}
+  .dish .ing{margin-top:7px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;font-weight:800;color:var(--gold)}
+  .dish .tag{display:inline-block;margin-top:7px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--olive);background:rgba(45,74,62,.08);border-radius:999px;padding:4px 9px}
+  .dish .p{font-family:var(--serif);font-size:1.28rem;font-weight:700;color:var(--espresso);white-space:nowrap;align-self:start}
+  html[lang="ar"] .dish h3,html[lang="ar"] .dish .p{font-family:var(--serif-active)}
+  html[lang="ar"] .dish .ing,html[lang="ar"] .dish .tag{letter-spacing:0;text-transform:none;font-size:11px}
+  html[dir="rtl"] .dish{grid-template-columns:auto 1fr 96px}
+  html[dir="rtl"] .dish .p{text-align:left}
+  .menu-noscript{margin-top:20px;font-size:13px;color:var(--taupe)}
+  @media(max-width:520px){
+    .dish{grid-template-columns:74px 1fr;gap:12px}
+    .dish img{width:74px;height:74px}
+    .dish .p{grid-column:2;justify-self:start;margin-top:2px}
+    .menu-tab{padding:10px 14px;font-size:10px}
+  }
+
+  /* grain */
+  .grain::after{
+    content:"";position:fixed;inset:0;z-index:95;pointer-events:none;opacity:.03;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 250 250' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-media img,.scroll-hint .bar{animation:none}
+    html.anim .reveal{opacity:1;transform:none}
+    html.anim .reveal-lines .ln > span{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body class="grain">
+<div id="splash" aria-hidden="true" style="animation:splashOut .9s ease 1.6s forwards">
+  <div><img src="../assets/brand/brooks-badge.svg" alt="" width="190" height="190"><span data-i18n="splash.place">Nabeul • AFH2</span></div>
+</div>
+<div id="rail"></div>
+
+<header id="nav">
+  <a class="brand" href="#hero">
+    <img class="brand-badge" src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café" width="38" height="38">
+    <span><b>Brooks Café</b><small data-i18n="brand.tag">Nabeul • Cap Bon</small></span>
+  </a>
+  <nav class="links">
+    <a href="#tour" data-i18n="nav.tour">Virtual Tour</a>
+    <a href="#story" data-i18n="nav.story">Our Story</a>
+    <a href="#menu" data-i18n="nav.menu">Menu</a>
+    <a href="#signature" data-i18n="nav.signature">Signature</a>
+    <a href="#reserve" data-i18n="nav.reserve">Book a Table</a>
+  </nav>
+  <div class="nav-right">
+    <div class="lang" role="group" aria-label="Langue / Language / اللغة">
+      <button type="button" data-lang="fr" class="">FR</button>
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="ar">AR</button>
+    </div>
+    <a class="cta" href="#reserve" data-i18n="nav.cta">Reserve a table</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="hero">
+  <div class="hero-media"><img src="../assets/venue/brooks-salon-columns.jpg" alt="Salle du Brooks Café Nabeul"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Nabeul • Cap Bon • Mediterranean Coast</p>
+    <h1 class="hero-title">
+      <span class="line"><span data-i18n="hero.l1">Specialty coffee,</span></span>
+      <span class="line"><span data-i18n="hero.l2">vibrant <em>à la carte</em></span></span>
+      <span class="line"><span data-i18n="hero.l3">on the Cap Bon coast.</span></span>
+    </h1>
+    <p class="hero-sub" data-i18n="hero.sub">Pizza • Pasta • Food • Fruits: our real photos, our real room. Lotus cheesecake, seafood pasta, pizzas to share — Food • Chill • Good vibes, every day from 7:30 to midnight.</p>
+    <div class="hero-actions">
+      <a class="cta gold" href="#menu" data-i18n="hero.cta1">Explore the menu</a>
+      <a class="cta ghost" href="#tour" data-i18n="hero.cta2">Virtual tour</a>
+    </div>
+    <div class="hero-meta">
+      <span><i></i> <b data-i18n="hero.open">Open daily 7:30 — 00:00</b></span>
+      <span><i></i> <b data-i18n="hero.rating">4.6 ★ Google</b></span>
+      <span><i></i> <b data-i18n="hero.addr">AFH2, Av. Habib Bourguiba, Nabeul</b></span>
+    </div>
+  </div>
+  <div class="scroll-hint"><span data-i18n="hero.scroll">Scroll</span><span class="bar"></span></div>
+</section>
+
+<!-- ============ TOUR HORIZONTAL PINNÉ ============ -->
+<section id="tour">
+  <div class="wrap pin-head">
+    <p class="eyebrow" data-i18n="tour.eyebrow">Guided tour • Horizontal scroll</p>
+    <h2 class="serif" data-i18n="tour.title">Walk the café <em>in one gesture</em></h2>
+    <p class="lead" data-i18n="tour.lead">Pinned section: vertical scroll drives a horizontal tracking shot. Our real rooms, our real pizzas — keep scrolling to walk in.</p>
+  </div>
+  <div class="track-outer">
+    <div class="track">
+      <article class="card">
+        <img src="../assets/venue/brooks-salon-lumiere.jpg" alt="Le salon aux colonades et ses luminaires">
+        <div class="card-body"><div class="num" data-i18n="tour.c1n">01 — THE GRAND SALON</div><h3 data-i18n="tour.c1t">Columns &amp; Light</h3><p data-i18n="tour.c1d">Organic columns, rattan pendants and green alcoves: Brooks' architectural signature.</p><div class="price" data-i18n="tour.c1p">Capacity → 90 seats</div></div>
+      </article>
+      <article class="card">
+        <img src="../assets/venue/brooks-salle-rouge.jpg" alt="La salle Brooks aux fauteuils rouges">
+        <div class="card-body"><div class="num" data-i18n="tour.c2n">02 — THE DINING ROOM</div><h3 data-i18n="tour.c2t">Red &amp; Velvet</h3><p data-i18n="tour.c2d">Tufted banquettes, red armchairs, palms and warm stone — open from 7:30 to midnight.</p><div class="price" data-i18n="tour.c2p">Continuous service</div></div>
+      </article>
+      <article class="card">
+        <img src="../assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Pizza fruits de mer Brooks Café">
+        <div class="card-body"><div class="num" data-i18n="tour.c3n">03 — PIZZA • PASTA</div><h3 data-i18n="tour.c3t">Seafood Pizza</h3><p data-i18n="tour.c3d">Thin crust, seafood, melted cheese and basil — one of the pizzas that built our reputation.</p><div class="price" data-i18n="tour.c3p">Oven → to order</div></div>
+      </article>
+      <article class="card">
+        <img src="../assets/venue/brooks-pizza-table.jpg" alt="Pizza quatre fromages servie en salle">
+        <div class="card-body"><div class="num" data-i18n="tour.c4n">04 — CHEESE PIZZA</div><h3 data-i18n="tour.c4t">Quattro Formaggi</h3><p data-i18n="tour.c4d">Soft, molten, made to be shared at the centre of the table — served on a wooden board, of course.</p><div class="price" data-i18n="tour.c4p">To share → 2/3 people</div></div>
+      </article>
+    </div>
+  </div>
+  <div class="wrap pin-hint" data-i18n="tour.hint" data-i18n-mobile="tour.hintMobile">↔ Keep scrolling — the page moves sideways</div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section id="story">
+  <div class="wrap story-grid">
+    <div>
+      <p class="eyebrow" data-i18n="story.eyebrow">Our story in Nabeul</p>
+      <h2 class="reveal-lines">
+        <span class="ln"><span data-i18n="story.l1">A sun-drenched</span></span>
+        <span class="ln"><span data-i18n="story.l2">house of coffee &amp; <em>gastronomy</em></span></span>
+        <span class="ln"><span data-i18n="story.l3">on the Cap Bon.</span></span>
+      </h2>
+      <div class="pillars">
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b1">Specialty arabica</b><small data-i18n="story.b1d">V60, espresso, Spanish latte — roasted micro-lots, extracted with precision.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b2">Fresh kitchen, 7/7</b><small data-i18n="story.b2d">Wood-fired pizzas, Cap Bon grills, generous brunches at any hour.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="story.b3">Three worlds, one ritual</b><small data-i18n="story.b3d">Olive terrace, Grand Salon and VIP lounge for every moment of the day.</small></div></div>
+      </div>
+    </div>
+    <div class="story-copy">
+      <p class="reveal" data-i18n="story.p1">On the elegant boulevards of Nabeul, Brooks has become the living room of Cap Bon: warm limestone, olive greenery and the scent of freshly ground arabica, from morning to midnight.</p>
+      <p class="reveal" data-i18n="story.p2">From slowly poured V60 to silky Spanish lattes, from wood-fired pizzas to our mango &amp;amp; cheesecake creations — everything is fresh, vibrant and made to be shared.</p>
+      <p class="reveal" style="font-weight:700;color:var(--espresso)" data-i18n="story.p3">Food • Chill • Good vibes — your favourite spot in Nabeul.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SIGNATURE (scale scroll) ============ -->
+<section id="signature">
+  <div class="stack-viewport">
+    <div class="plate" id="plate">
+      <img src="../assets/menu/cheesecake-lotus.jpg" alt="Cheesecake Lotus Brooks Café">
+    </div>
+    <div class="plate-copy">
+      <p class="eyebrow" data-i18n="sig.eyebrow">The sweet signature</p>
+      <h2 data-i18n="sig.title">Lotus<br>Cheesecake</h2>
+      <p data-i18n="sig.text">Creamy, molten, irresistible: biscuit base, silky heart and a slow Lotus drizzle. Baked fresh daily — served with a short espresso.</p>
+      <span class="price-tag" data-i18n="sig.tag">Baked daily • To share</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PASTA FRUITS DE MER ============ -->
+<section id="pasta">
+  <div class="wrap pasta-grid">
+    <div class="pasta-media" id="pastaMedia">
+      <img src="../assets/menu/pasta-fruits-de-mer.jpg" alt="Pasta fruits de mer — crevettes, moules, tomates cerises">
+    </div>
+    <div class="pasta-copy">
+      <p class="eyebrow" data-i18n="pasta.eyebrow">The sharing plate</p>
+      <h2 class="serif" data-i18n="pasta.title">Seafood<br><em>Pasta</em></h2>
+      <p data-i18n="pasta.text">Al dente linguine, seared prawns, mussels, cherry tomatoes, garlic, parsley and a touch of chilli. A generous plate, made to sit at the centre of the table.</p>
+      <ul class="pasta-notes">
+        <li><span></span><b data-i18n="pasta.n1">Prawns &amp;amp; mussels of the day</b></li>
+        <li><span></span><b data-i18n="pasta.n2">Roasted cherry tomatoes, garlic, parsley</b></li>
+        <li><span></span><b data-i18n="pasta.n3">Cooked to order</b></li>
+      </ul>
+      <a class="cta gold" href="#reserve" style="margin-top:22px" data-i18n="pasta.cta">Book a table</a>
+    </div>
+  </div>
+</section>
+
+<!-- MENU_DATA_START -->
+<script id="menu-data" type="application/json">
+{
+  "mains": [
+    {
+      "fr": "Burger Signature Brooks",
+      "en": "Brooks Signature Burger",
+      "ar": "برجر بروكس المميز",
+      "dfr": "Bœuf smashé, cheddar affiné, oignons caramélisés, sauce maison, brioché toastée + frites dorées.",
+      "den": "Smashed beef, aged cheddar, caramelised onions, house sauce, toasted brioche + golden fries.",
+      "dar": "لحم مدخن، شيدر معتق، بصل مكرمل، صلصة البيت، بريوش محمص + بطاطس ذهبية.",
+      "ifr": "Brioche • Cheddar • Roquette • Sauce maison",
+      "ien": "Brioche • Cheddar • Rocket • House sauce",
+      "iar": "بريوش • شيدر • جرجير • صلصة البيت",
+      "price": "32 DT",
+      "tagfr": "Le Plus Aimé",
+      "tagen": "Most Loved",
+      "tagar": "الأكثر حباً",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Suprême de Poulet Grillé",
+      "en": "Grilled Chicken Supreme",
+      "ar": "صدر الدجاج المشوي",
+      "dfr": "Poulet mariné aux herbes, huile d'olive du Cap Bon, légumes grillés, jus corsé.",
+      "den": "Herb-marinated chicken, Cap Bon olive oil, charred vegetables, jus corsé.",
+      "dar": "دجاج متبل بالأعشاب، زيت زيتون الوطن القبلي، خضار مشوية، صلصة مركزة.",
+      "ifr": "Fermier • Thym • Citron • Huile d'olive",
+      "ien": "Free-range • Thyme • Lemon • Olive oil",
+      "iar": "بلدي • زعتر • ليمون • زيت زيتون",
+      "price": "36 DT",
+      "tagfr": "Choix du Chef",
+      "tagen": "Chef's Pick",
+      "tagar": "اختيار الشيف",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Margherita di Nabeul",
+      "en": "Margherita di Nabeul",
+      "ar": "مارغريتا نابل",
+      "dfr": "Au feu de bois, tomate San Marzano, fior di latte, basilic, huile d'olive pressée à froid.",
+      "den": "Wood-fired, San Marzano tomato, fior di latte, basil, cold-pressed olive oil.",
+      "dar": "على الحطب، طماطم سان مارزانو، فيور دي لاتيه، حبق، زيت زيتون بكر.",
+      "ifr": "Feu de bois • Basilic • Fior di latte",
+      "ien": "Wood fire • Basil • Fior di latte",
+      "iar": "حطب • حبق • فيور دي لاتيه",
+      "price": "24 DT",
+      "tagfr": "Feu de Bois",
+      "tagen": "Wood-Fired",
+      "tagar": "على الحطب",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Linguine Crémeuse du Jardin",
+      "en": "Creamy Garden Linguine",
+      "ar": "لينغويني كريمية بالخضار",
+      "dfr": "Crème soyeuse au parmesan, tomates confites, basilic, pignons toastés.",
+      "den": "Silky parmesan cream, sun-blushed tomatoes, basil, toasted pine nuts.",
+      "dar": "كريمة بارميزان حريرية، طماطم مجففة، حبق، صنوبر محمص.",
+      "ifr": "Parmesan • Basilic • Pignons",
+      "ien": "Parmesan • Basil • Pine nuts",
+      "iar": "بارميزان • حبق • صنوبر",
+      "price": "29 DT",
+      "tagfr": "Végétarien",
+      "tagen": "Vegetarian",
+      "tagar": "نباتي",
+      "img": "/assets/menu/pasta-fruits-de-mer.jpg"
+    }
+  ],
+  "coffee": [
+    {
+      "fr": "V60 Origine Unique",
+      "en": "Single-Origin V60 Pour-Over",
+      "ar": "تقطير V60 مصدر واحد",
+      "dfr": "Éthiopie Yirgacheffe, floraison lente, floral & abricot — versé à table.",
+      "den": "Ethiopia Yirgacheffe, slow bloom, floral & apricot — brewed tableside.",
+      "dar": "إثيوبيا يرغاشيف، تقطير بطيء، زهري ومشمش — يُحضَّر أمام الطاولة.",
+      "ifr": "Yirgacheffe • 92°C • 3:00 min",
+      "ien": "Yirgacheffe • 92°C • 3:00 min",
+      "iar": "يرغاشيف • 92° • 3:00 د",
+      "price": "14 DT",
+      "tagfr": "Slow Brew",
+      "tagen": "Slow Brew",
+      "tagar": "تقطير بطيء",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Latte Espagnol Doré",
+      "en": "Spanish Golden Latte",
+      "ar": "لاتيه إسباني ذهبي",
+      "dfr": "Double ristretto, lait concentré soyeux, latte art galerie, créma dorée.",
+      "den": "Double ristretto, condensed milk silk, gallery latte art, sun-kissed crema.",
+      "dar": "ريستريتو مضاعف، حليب مكثف حريري، فن لاتيه راقٍ، كريما ذهبية.",
+      "ifr": "Ristretto • Lait concentré • Art",
+      "ien": "Ristretto • Condensed milk • Art",
+      "iar": "ريستريتو • حليب مكثف • فن",
+      "price": "12 DT",
+      "tagfr": "Signature",
+      "tagen": "Signature",
+      "tagar": "مميز",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Nuage Glacé Caramel",
+      "en": "Iced Caramel Cloud",
+      "ar": "سحابة الكراميل المثلجة",
+      "dfr": "Cold brew, nuage de caramel, voile de vanille — la star de la terrasse.",
+      "den": "Cold brew, caramel cloud foam, vanilla mist — the terrace favourite.",
+      "dar": "كولد برو، رغوة كراميل سحابية، لمسة فانيليا — نجمة التراس.",
+      "ifr": "Cold brew • Caramel • Vanille",
+      "ien": "Cold brew • Caramel • Vanilla",
+      "iar": "كولد برو • كراميل • فانيليا",
+      "price": "16 DT",
+      "tagfr": "Icône Glacée",
+      "tagen": "Iced Icon",
+      "tagar": "أيقونة مثلجة",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Mojito Vierge & Éclat Mangue",
+      "en": "Virgin Mojito & Mango Glow",
+      "ar": "موهيتو فيرجن وتوهج المانجو",
+      "dfr": "Menthe pressée, citron vert, nectar de mangue, pétillance glacée.",
+      "den": "Hand-pressed mint, lime, mango nectar, sparkling chill.",
+      "dar": "نعناع طازج، ليمون أخضر، رحيق مانجو، انتعاش فوار.",
+      "ifr": "Menthe • Citron • Mangue • Pétillant",
+      "ien": "Mint • Lime • Mango • Sparkle",
+      "iar": "نعناع • ليمون • مانجو • فوار",
+      "price": "15 DT",
+      "tagfr": "Frais",
+      "tagen": "Fresh",
+      "tagar": "طازج",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    }
+  ],
+  "dessert": [
+    {
+      "fr": "Parfait Mangue Passion",
+      "en": "Mango Passion Parfait",
+      "ar": "بارفيه المانجو والباشن",
+      "dfr": "Notre légende — mousse mangue, coulis passion, chantilly vanille, crumble amande.",
+      "den": "Our legend — mango mousse, passion coulis, vanilla chantilly, almond crumble.",
+      "dar": "أسطورتنا — موس مانجو، كولي الباشن، شانتيي فانيليا، كرامبل لوز.",
+      "ifr": "Mangue • Passion • Chantilly",
+      "ien": "Mango • Passion • Chantilly",
+      "iar": "مانجو • باشن • شانتيي",
+      "price": "22 DT",
+      "tagfr": "Légendaire",
+      "tagen": "Legendary",
+      "tagar": "أسطوري",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Cheesecake San Sebastián",
+      "en": "San Sebastián Cheesecake",
+      "ar": "تشيز كيك سان سيباستيان",
+      "dfr": "Basque caramélisé, cœur fondant, poussière de pistache — cuit chaque jour.",
+      "den": "Burnt-top Basque, molten heart, pistachio dust — baked fresh daily.",
+      "dar": "باسك مكرمل، قلب ذائب، غبار الفستق — يُخبز يومياً.",
+      "ifr": "Basque • Pistache • Vanille",
+      "ien": "Basque • Pistachio • Vanilla",
+      "iar": "باسك • فستق • فانيليا",
+      "price": "24 DT",
+      "tagfr": "Cuit du Jour",
+      "tagen": "Baked Daily",
+      "tagar": "يُخبز يومياً",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Fondant Chocolat Minuit",
+      "en": "Midnight Chocolate Fondant",
+      "ar": "فوندان الشوكولاتة",
+      "dfr": "Cœur 70% noir, fleur de sel, glace vanille, éclats de cacao.",
+      "den": "70% dark flow, fleur de sel, vanilla gelato, cocoa-nib snap.",
+      "dar": "قلب شوكولاتة 70%، ملح زهرة، آيس كريم فانيليا، كسرات كاكاو.",
+      "ifr": "70% noir • Fleur de sel • Glace",
+      "ien": "70% dark • Fleur de sel • Gelato",
+      "iar": "70% داكنة • ملح • جيلاتو",
+      "price": "20 DT",
+      "tagfr": "Décadent",
+      "tagen": "Decadent",
+      "tagar": "فاخر",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Panier Croissants Dorés",
+      "en": "Golden Croissant Basket",
+      "ar": "سلة الكرواسون الذهبية",
+      "dfr": "Croissants feuilletés au beurre, trio de confitures, miel & œufs brouillés.",
+      "den": "Flaky butter croissants, morning jam trio, honey & soft scrambled pairing.",
+      "dar": "كرواسون زبدة هش، ثلاثية مربى، عسل وبيض مخفوق.",
+      "ifr": "Beurre • Trio confitures • Miel",
+      "ien": "Butter • Jam trio • Honey",
+      "iar": "زبدة • مربى • عسل",
+      "price": "18 DT",
+      "tagfr": "Rituel Matin",
+      "tagen": "Morning Ritual",
+      "tagar": "طقس الصباح",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    }
+  ],
+  "galerie": [
+    {
+      "fr": "Burger Signature Brooks",
+      "en": "Brooks Signature Burger",
+      "ar": "برجر بروكس المميز",
+      "dfr": "Bœuf smashé, cheddar affiné, oignons caramélisés, sauce maison, brioché toastée + frites dorées.",
+      "den": "Smashed beef, aged cheddar, caramelised onions, house sauce, toasted brioche + golden fries.",
+      "dar": "لحم مدخن، شيدر معتق، بصل مكرمل، صلصة البيت، بريوش محمص + بطاطس ذهبية.",
+      "ifr": "Brioche • Cheddar • Roquette • Sauce maison",
+      "ien": "Brioche • Cheddar • Rocket • House sauce",
+      "iar": "بريوش • شيدر • جرجير • صلصة البيت",
+      "price": "32 DT",
+      "tagfr": "Le Plus Aimé",
+      "tagen": "Most Loved",
+      "tagar": "الأكثر حباً",
+      "img": "/assets/venue/brooks-pizza-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "Suprême de Poulet Grillé",
+      "en": "Grilled Chicken Supreme",
+      "ar": "صدر الدجاج المشوي",
+      "dfr": "Poulet mariné aux herbes, huile d'olive du Cap Bon, légumes grillés, jus corsé.",
+      "den": "Herb-marinated chicken, Cap Bon olive oil, charred vegetables, jus corsé.",
+      "dar": "دجاج متبل بالأعشاب، زيت زيتون الوطن القبلي، خضار مشوية، صلصة مركزة.",
+      "ifr": "Fermier • Thym • Citron • Huile d'olive",
+      "ien": "Free-range • Thyme • Lemon • Olive oil",
+      "iar": "بلدي • زعتر • ليمون • زيت زيتون",
+      "price": "36 DT",
+      "tagfr": "Choix du Chef",
+      "tagen": "Chef's Pick",
+      "tagar": "اختيار الشيف",
+      "img": "/assets/menu/pasta-fruits-de-mer.jpg"
+    },
+    {
+      "fr": "V60 Origine Unique",
+      "en": "Single-Origin V60 Pour-Over",
+      "ar": "تقطير V60 مصدر واحد",
+      "dfr": "Éthiopie Yirgacheffe, floraison lente, floral & abricot — versé à table.",
+      "den": "Ethiopia Yirgacheffe, slow bloom, floral & apricot — brewed tableside.",
+      "dar": "إثيوبيا يرغاشيف، تقطير بطيء، زهري ومشمش — يُحضَّر أمام الطاولة.",
+      "ifr": "Yirgacheffe • 92°C • 3:00 min",
+      "ien": "Yirgacheffe • 92°C • 3:00 min",
+      "iar": "يرغاشيف • 92° • 3:00 د",
+      "price": "14 DT",
+      "tagfr": "Slow Brew",
+      "tagen": "Slow Brew",
+      "tagar": "تقطير بطيء",
+      "img": "/assets/venue/brooks-salon-columns.jpg"
+    },
+    {
+      "fr": "Latte Espagnol Doré",
+      "en": "Spanish Golden Latte",
+      "ar": "لاتيه إسباني ذهبي",
+      "dfr": "Double ristretto, lait concentré soyeux, latte art galerie, créma dorée.",
+      "den": "Double ristretto, condensed milk silk, gallery latte art, sun-kissed crema.",
+      "dar": "ريستريتو مضاعف، حليب مكثف حريري، فن لاتيه راقٍ، كريما ذهبية.",
+      "ifr": "Ristretto • Lait concentré • Art",
+      "ien": "Ristretto • Condensed milk • Art",
+      "iar": "ريستريتو • حليب مكثف • فن",
+      "price": "12 DT",
+      "tagfr": "Signature",
+      "tagen": "Signature",
+      "tagar": "مميز",
+      "img": "/assets/venue/brooks-salon-lumiere.jpg"
+    },
+    {
+      "fr": "Parfait Mangue Passion",
+      "en": "Mango Passion Parfait",
+      "ar": "بارفيه المانجو والباشن",
+      "dfr": "Notre légende — mousse mangue, coulis passion, chantilly vanille, crumble amande.",
+      "den": "Our legend — mango mousse, passion coulis, vanilla chantilly, almond crumble.",
+      "dar": "أسطورتنا — موس مانجو، كولي الباشن، شانتيي فانيليا، كرامبل لوز.",
+      "ifr": "Mangue • Passion • Chantilly",
+      "ien": "Mango • Passion • Chantilly",
+      "iar": "مانجو • باشن • شانتيي",
+      "price": "22 DT",
+      "tagfr": "Légendaire",
+      "tagen": "Legendary",
+      "tagar": "أسطوري",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    },
+    {
+      "fr": "Cheesecake San Sebastián",
+      "en": "San Sebastián Cheesecake",
+      "ar": "تشيز كيك سان سيباستيان",
+      "dfr": "Basque caramélisé, cœur fondant, poussière de pistache — cuit chaque jour.",
+      "den": "Burnt-top Basque, molten heart, pistachio dust — baked fresh daily.",
+      "dar": "باسك مكرمل، قلب ذائب، غبار الفستق — يُخبز يومياً.",
+      "ifr": "Basque • Pistache • Vanille",
+      "ien": "Basque • Pistachio • Vanilla",
+      "iar": "باسك • فستق • فانيليا",
+      "price": "24 DT",
+      "tagfr": "Cuit du Jour",
+      "tagen": "Baked Daily",
+      "tagar": "يُخبز يومياً",
+      "img": "/assets/menu/cheesecake-lotus.jpg"
+    }
+  ]
+}
+</script>
+<!-- MENU_DATA_END -->
+
+<!-- ============ MENU (onglets, 3 langues) ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="menu-head">
+      <p class="eyebrow" data-i18n="menu.eyebrow">À la carte • Nabeul</p>
+      <h2 class="serif" data-i18n="menu.title">Our <em>menu</em></h2>
+      <p class="lead" data-i18n="menu.lead">A short, fresh, sun-kissed menu — grilled, baked and brewed to order. Prices in Tunisian dinars (DT).</p>
+    </div>
+
+    <div class="menu-tabs" role="tablist" aria-label="Menu">
+      <button type="button" role="tab" class="menu-tab on" data-cat="galerie" aria-selected="true" data-i18n="menu.tab.galerie">Highlights</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="mains" aria-selected="false" data-i18n="menu.tab.mains">Mains</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="coffee" aria-selected="false" data-i18n="menu.tab.coffee">Coffee &amp;amp; elixirs</button>
+      <button type="button" role="tab" class="menu-tab" data-cat="dessert" aria-selected="false" data-i18n="menu.tab.dessert">Desserts</button>
+      <span class="menu-tab-ink" aria-hidden="true"></span>
+    </div>
+
+    <div class="menu-grid is-gallery" id="menuGrid" role="tabpanel">
+    <article class="dish">
+      <img src="../assets/venue/brooks-pizza-fruits-de-mer.jpg" alt="Burger Signature Brooks">
+      <div><h3>Brooks Signature Burger</h3><p>Smashed beef, aged cheddar, caramelised onions, house sauce, toasted brioche + golden fries.</p>
+      <div class="ing">Brioche • Cheddar • Rocket • House sauce</div><span class="tag">Most Loved</span></div>
+      <div class="p">32 DT</div>
+    </article>
+    <article class="dish">
+      <img src="../assets/menu/pasta-fruits-de-mer.jpg" alt="Suprême de Poulet Grillé">
+      <div><h3>Grilled Chicken Supreme</h3><p>Herb-marinated chicken, Cap Bon olive oil, charred vegetables, jus corsé.</p>
+      <div class="ing">Free-range • Thyme • Lemon • Olive oil</div><span class="tag">Chef's Pick</span></div>
+      <div class="p">36 DT</div>
+    </article>
+    <article class="dish">
+      <img src="../assets/venue/brooks-salon-columns.jpg" alt="V60 Origine Unique">
+      <div><h3>Single-Origin V60 Pour-Over</h3><p>Ethiopia Yirgacheffe, slow bloom, floral &amp; apricot — brewed tableside.</p>
+      <div class="ing">Yirgacheffe • 92°C • 3:00 min</div><span class="tag">Slow Brew</span></div>
+      <div class="p">14 DT</div>
+    </article>
+    <article class="dish">
+      <img src="../assets/venue/brooks-salon-lumiere.jpg" alt="Latte Espagnol Doré">
+      <div><h3>Spanish Golden Latte</h3><p>Double ristretto, condensed milk silk, gallery latte art, sun-kissed crema.</p>
+      <div class="ing">Ristretto • Condensed milk • Art</div><span class="tag">Signature</span></div>
+      <div class="p">12 DT</div>
+    </article>
+    <article class="dish">
+      <img src="../assets/menu/cheesecake-lotus.jpg" alt="Parfait Mangue Passion">
+      <div><h3>Mango Passion Parfait</h3><p>Our legend — mango mousse, passion coulis, vanilla chantilly, almond crumble.</p>
+      <div class="ing">Mango • Passion • Chantilly</div><span class="tag">Legendary</span></div>
+      <div class="p">22 DT</div>
+    </article>
+    <article class="dish">
+      <img src="../assets/menu/cheesecake-lotus.jpg" alt="Cheesecake San Sebastián">
+      <div><h3>San Sebastián Cheesecake</h3><p>Burnt-top Basque, molten heart, pistachio dust — baked fresh daily.</p>
+      <div class="ing">Basque • Pistachio • Vanilla</div><span class="tag">Baked Daily</span></div>
+      <div class="p">24 DT</div>
+    </article></div>
+    <noscript><p class="menu-noscript">Pizza 24 DT · Pasta fruits de mer · Burger 32 DT · Cheesecake Lotus 24 DT · Latte espagnol 12 DT — 93 301 771</p></noscript>
+  </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section id="stats">
+  <div class="wrap stats">
+    <div class="stat"><b data-count="48">0</b><span data-i18n="stats.s1">Signature dishes</span></div>
+    <div class="stat"><b data-count="36">0</b><span data-i18n="stats.s2">Coffees &amp;amp; elixirs</span></div>
+    <div class="stat"><b data-count="46" data-decimal="1">0</b><span data-i18n="stats.s3">Google rating</span></div>
+    <div class="stat"><b data-count="22" data-suffix="K">0</b><span data-i18n="stats.s4">Guests / month</span></div>
+  </div>
+</section>
+
+<!-- ============ PARALLAX QUOTE ============ -->
+<section id="quote">
+  <div class="bg" id="quoteBg" style="background-image:url('../assets/venue/brooks-salon-lumiere.jpg')"></div>
+  <div class="wrap">
+    <blockquote data-i18n="quote.text">“The best <em>Spanish latte</em> on the Cap Bon — and the softest terrace at sunset.”</blockquote>
+    <cite data-i18n="quote.cite">— Google review, Nabeul 2025</cite>
+  </div>
+</section>
+
+<!-- ============ RESERVE ============ -->
+<section id="reserve">
+  <div class="wrap grid2">
+    <div>
+      <p class="eyebrow" data-i18n="res.eyebrow">Reservation</p>
+      <h2 data-i18n="res.title">Your table<br>in the sun awaits</h2>
+      <p data-i18n="res.text">Choose your world — Grand Salon, Olive Terrace or VIP lounge. Our concierge confirms within minutes on WhatsApp.</p>
+      <div class="pillars" style="margin-top:24px">
+        <div class="pillar reveal"><i></i><div><b data-i18n="res.b1">WhatsApp confirmation</b><small data-i18n="res.b1d">No account, no lost form — one message, one answer.</small></div></div>
+        <div class="pillar reveal"><i></i><div><b data-i18n="res.b2">Sunday karaoke</b><small data-i18n="res.b2d">Booking advised after 7 pm — tables go fast.</small></div></div>
+      </div>
+    </div>
+    <form class="panel reveal" id="form">
+      <div class="field">
+        <label for="area" data-i18n="res.area">Area</label>
+        <select id="area" name="area">
+          <option data-i18n="res.area1">Olive Courtyard Terrace</option>
+          <option data-i18n="res.area2">Grand Salon</option>
+          <option data-i18n="res.area3">VIP &amp; Family Lounge</option>
+        </select>
+      </div>
+      <div class="two">
+        <div class="field"><label for="date" data-i18n="res.date">Date</label><input type="date" id="date" name="date" required=""></div>
+        <div class="field"><label for="time" data-i18n="res.time">Time</label>
+          <select id="time" name="time"><option>12:30</option><option>14:00</option><option>17:00</option><option selected="">19:30</option><option>21:00</option></select>
+        </div>
+      </div>
+      <div class="two">
+        <div class="field"><label for="guests" data-i18n="res.guests">Guests</label><input type="number" id="guests" name="guests" min="1" max="20" value="2"></div>
+        <div class="field"><label for="name" data-i18n="res.name">Name</label><input id="name" name="name" placeholder="Amine Trabelsi" required=""></div>
+      </div>
+      <div class="field"><label for="phone" data-i18n="res.phone">Phone / WhatsApp</label><input id="phone" name="phone" placeholder="+216 …" required=""></div>
+      <button type="submit" class="cta" style="width:100%;justify-content:center;margin-top:6px"><span data-i18n="res.submit">Confirm on WhatsApp</span></button>
+      <p class="note" data-i18n="res.note">This form stores nothing: it simply opens WhatsApp with your request pre-filled.</p>
+      <div class="ok" id="ok" data-i18n="res.ok">Thank you! WhatsApp is opening with your request — the concierge replies within minutes.</div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="../assets/brand/brooks-badge.svg" alt="Logo Brooks Café Nabeul" width="92" height="92" style="margin-bottom:14px">
+        <p class="big serif">Brooks Café<br>Nabeul</p>
+        <p style="margin-top:12px;max-width:32ch" data-i18n="foot.tag">Food • Chill • Good vibes — your favourite spot on the Cap Bon coast.</p>
+      </div>
+      <div><h4 data-i18n="foot.addr">Address</h4><p data-i18n="foot.address">AFH2, Av. Habib Bourguiba<br>Nabeul 8000, Tunisia</p><a href="https://maps.google.com/?q=BROOKS+CAFE+Nabeul" target="_blank" rel="noreferrer" data-i18n="foot.route">Get directions</a></div>
+      <div><h4 data-i18n="foot.contact">Contact</h4><a href="tel:+21693301771">+216 93 301 771</a><a href="#">@broookscafe</a></div>
+      <div><h4 data-i18n="foot.hours">Opening hours</h4><p data-i18n="foot.daily">Every day<br>7:30 — 00:00</p><p data-i18n="foot.karaoke">Karaoke on Sundays</p></div>
+    </div>
+    <div class="legal"><span data-i18n="foot.rights">© 2026 Brooks Café Nabeul</span><span data-i18n="foot.stack">GSAP + Lenis site — hosted on Vercel</span></div>
+  </div>
+</footer>
+
+<!-- ============ MOTEUR D'ANIMATION ============ -->
+
+
+
+
+
+
+
+</body></html>
