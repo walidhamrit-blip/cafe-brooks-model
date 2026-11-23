@@ -37,7 +37,7 @@ public/
 scripts/
   build-badge.mjs                 ← régénère le logo SVG + les PNG
   sync-menu.mjs                   ← synchronise la carte trilingue depuis src/App.tsx
-  test-i18n.mjs                   ← 22 tests (3 langues, RTL, menu, onglets)
+  test-i18n.mjs                   ← 32 tests (3 langues, RTL, menu, onglets, SEO, JSON-LD, anti-flash)
   preview-langs.mjs               ← aperçus statiques des 3 langues
   build-og.mjs                    ← régénère l'image Open Graph
 docs/
