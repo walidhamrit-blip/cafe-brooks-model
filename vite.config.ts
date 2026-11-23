@@ -16,4 +16,14 @@ export default defineConfig({
       "@": path.resolve(__dirname, "src"),
     },
   },
+  // Dev/preview server: bind on all interfaces and accept proxied preview hosts
+  // (e.g. https://<port>-<sandbox>.e2b.app) plus Vercel preview deployments.
+  server: {
+    host: "0.0.0.0",
+    allowedHosts: [".e2b.app", ".vercel.app", "localhost"],
+  },
+  preview: {
+    host: "0.0.0.0",
+    allowedHosts: true,
+  },
 });
